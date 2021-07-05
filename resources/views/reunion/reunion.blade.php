@@ -60,7 +60,7 @@
 						</div>
 
 						<div class="col-md-5">
-							<span> Pv<span class="text text-danger"></span></span>
+							<span> Privé<span class="text text-danger"></span></span>
 							<input style="padding-top:0px;" placeholder="" type="text" class="form-control" name="reunion_pv" value="{{ old('reunion_pv') }}" required>
 						</div>
 						

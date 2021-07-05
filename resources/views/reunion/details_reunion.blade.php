@@ -84,7 +84,7 @@ ul.no_liste_item li {
 						</span>		
 						<span class="list-group-item"> 
 							<span class="badge bg-light">{{ $reunion->reunion_pv }}</span> 
-							<i class="fa fa- icon-muted"></i> pv
+							<i class="fa fa- icon-muted"></i> Privé
 						</span>		
 						<span class="list-group-item"> 
 							<span class="badge bg-light">{{ Stdfn::dateTimeFromDB($reunion->reunion_date_creation) }}</span> 
