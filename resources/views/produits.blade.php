@@ -88,12 +88,7 @@
 								@endforeach
 							</select>
 						</div>
-						
-						<!--div class="col-md-2">
-							<span> Stock<span class="text text-danger"></span></span>
-							<input style="padding-top:0px;" placeholder="" type="number" class="form-control" name="produit_stock" value="{{ old('produit_stock') }}" >
-														
-						</div-->
+					
 						
 						<div class="col-md-2">
 							<span>&nbsp; <span class="text text-danger"></span></span>

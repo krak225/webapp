@@ -14,13 +14,6 @@ use Illuminate\Http\Request;
 */
 
 //ROUTE POUR VERSION MOBILE
-Route::post('login_ws','Auth\LoginController@login_ws');
-Route::get('login_ws','Auth\LoginController@login_ws');
-
-Route::post('logout','Auth\LoginController@logout_ws');
-
-Route::get('/userinfos','ApiController@userinfos')->name('userinfos');
-Route::get('/send','ApiController@savePerception')->name('savePerception');
 
 
 

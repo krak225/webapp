@@ -60,6 +60,10 @@ CREATE TABLE IF NOT EXISTS `commande` (
   PRIMARY KEY (`commande_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
+-- Listage des données de la table dipcommerce_db.commande : 0 rows
+/*!40000 ALTER TABLE `commande` DISABLE KEYS */;
+/*!40000 ALTER TABLE `commande` ENABLE KEYS */;
+
 -- Listage de la structure de la table dipcommerce_db. dim_commune
 CREATE TABLE IF NOT EXISTS `dim_commune` (
   `commune_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -101,6 +105,10 @@ CREATE TABLE IF NOT EXISTS `dim_course` (
   `date_creation` datetime DEFAULT NULL,
   PRIMARY KEY (`course_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+
+-- Listage des données de la table dipcommerce_db.dim_course : 0 rows
+/*!40000 ALTER TABLE `dim_course` DISABLE KEYS */;
+/*!40000 ALTER TABLE `dim_course` ENABLE KEYS */;
 
 -- Listage de la structure de la table dipcommerce_db. dim_frais_livraison
 CREATE TABLE IF NOT EXISTS `dim_frais_livraison` (
@@ -149,6 +157,18 @@ INSERT INTO `kw_administrateur` (`kw_administrateur_id`, `kw_administrateur_logi
 	(10, 'admin', 'fece6adde0ec8c975e2b5ec91fce57ab1852fca4', 'admin@gmail.com', 1, 'ACTIVE');
 /*!40000 ALTER TABLE `kw_administrateur` ENABLE KEYS */;
 
+-- Listage de la structure de la table dipcommerce_db. migrations
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Listage des données de la table dipcommerce_db.migrations : ~0 rows (environ)
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+
 -- Listage de la structure de la table dipcommerce_db. panier
 CREATE TABLE IF NOT EXISTS `panier` (
   `panier_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -161,6 +181,26 @@ CREATE TABLE IF NOT EXISTS `panier` (
   PRIMARY KEY (`panier_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=96 DEFAULT CHARSET=latin1;
 
+-- Listage des données de la table dipcommerce_db.panier : 0 rows
+/*!40000 ALTER TABLE `panier` DISABLE KEYS */;
+/*!40000 ALTER TABLE `panier` ENABLE KEYS */;
+
+-- Listage de la structure de la table dipcommerce_db. participant
+CREATE TABLE IF NOT EXISTS `participant` (
+  `participant_id` int(5) DEFAULT NULL,
+  `participant_nom` varchar(255) DEFAULT NULL,
+  `participant_contact` int(10) DEFAULT NULL,
+  `participant_email` varchar(255) DEFAULT NULL,
+  `participant_fonction` varchar(200) DEFAULT NULL,
+  `participant_society` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Listage des données de la table dipcommerce_db.participant : ~2 rows (environ)
+/*!40000 ALTER TABLE `participant` DISABLE KEYS */;
+INSERT INTO `participant` (`participant_id`, `participant_nom`, `participant_contact`, `participant_email`, `participant_fonction`, `participant_society`) VALUES
+	(1, 'Boussou Juste Malachie', 778607985, 'malachieboussou44@gmail.com', 'Informaticien', 'Burida'),
+	(2, 'Kouadio Richard', 1234567890, 'kouadio@gmail.com', 'assistant', 'coppec');
+/*!40000 ALTER TABLE `participant` ENABLE KEYS */;
 
 -- Listage de la structure de la table dipcommerce_db. produit
 CREATE TABLE IF NOT EXISTS `produit` (
@@ -176,21 +216,22 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `produit_date_suppression` datetime DEFAULT NULL,
   `produit_statut` enum('VALIDE','DESACTIVE','SUPPRIME') NOT NULL DEFAULT 'VALIDE',
   PRIMARY KEY (`produit_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table dipcommerce_db.produit : 10 rows
+-- Listage des données de la table dipcommerce_db.produit : 11 rows
 /*!40000 ALTER TABLE `produit` DISABLE KEYS */;
 INSERT INTO `produit` (`produit_id`, `categorie_id`, `produit_nom`, `produit_photo`, `produit_description`, `produit_prix`, `produit_stock`, `produit_date_creation`, `produit_date_modification`, `produit_date_suppression`, `produit_statut`) VALUES
-	(1, 3, 'Sandwitch au poulet', 'https://images.anaca3.com/wp-content/uploads/2018/01/recette-sandwich-minceur-poulet-crudites-et-sauce-blanche-maison-702x336.jpg', 'Sandwitch au poulet', 2500, NULL, '2021-01-22 22:00:00', '2021-05-13 15:28:41', NULL, 'VALIDE'),
-	(2, 4, 'Poulet Yassa', 'https://img.cuisineaz.com/610x610/2016-04-28/i96651-poulet-yassa.jpg', 'POULET YASSA', 1500, NULL, '2021-01-22 22:00:00', '2021-05-13 00:09:58', NULL, 'VALIDE'),
+	(1, 3, 'Sandwitch au poulet', 'https://images.anaca3.com/wp-content/uploads/2018/01/recette-sandwich-minceur-poulet-crudites-et-sauce-blanche-maison-702x336.jpg', 'Sandwitch au poulet', 2500, NULL, '2021-01-22 22:00:00', '2021-05-13 15:28:41', '2021-06-21 16:46:15', 'SUPPRIME'),
+	(2, 4, 'Poulet Yassa', 'https://img.cuisineaz.com/610x610/2016-04-28/i96651-poulet-yassa.jpg', 'POULET YASSA', 1500, NULL, '2021-01-22 22:00:00', '2021-05-13 00:09:58', '2021-06-21 16:46:05', 'SUPPRIME'),
 	(3, 3, 'Tchep au poisson', 'https://static.independent.co.uk/2021/03/12/11/three-ways-with-tofu-120321.jpg?width=640&auto=webp&quality=75', 'TECHP AU POISSON', 1000, NULL, '2021-01-22 22:00:00', '2021-05-13 00:18:18', NULL, 'VALIDE'),
 	(4, 3, 'Foutou banane', 'https://www.linfodrome.com/media/article/images/thumb/58208-eccefc92bbbd118902c8d382dac78b64_xl.webp', 'Foutou banane', 1000, NULL, '2021-01-22 22:00:00', '2021-05-13 00:10:25', NULL, 'VALIDE'),
-	(5, 3, 'Garba', 'https://institutionci.com/wp-content/uploads/2020/08/image-8.jpeg', 'Garba Choco', 700, NULL, '2021-01-22 22:00:00', '2021-05-13 15:29:02', NULL, 'VALIDE'),
-	(6, 4, 'JUS DE FRUITS', '', 'JUS DE FRUITS', 200, NULL, '2021-01-22 22:00:00', '2021-05-13 10:20:05', '2021-05-12 21:01:34', 'VALIDE'),
+	(5, 3, 'Garba', 'https://institutionci.com/wp-content/uploads/2020/08/image-8.jpeg', 'Garba Choco', 700, NULL, '2021-01-22 22:00:00', '2021-05-13 15:29:02', '2021-06-21 16:47:45', 'SUPPRIME'),
+	(6, 4, 'JUS DE FRUITS', '', 'JUS DE FRUITS', 200, NULL, '2021-01-22 22:00:00', '2021-05-13 10:20:05', '2021-06-21 16:47:45', 'SUPPRIME'),
 	(7, 3, 'FOUTOU BANANE', '', 'FOUTOU BANANE', 1000, NULL, '2021-01-22 22:00:00', '2021-05-13 15:04:03', NULL, 'VALIDE'),
 	(13, 3, 'ATTIEKE POISSON FUME', 'produit_1620613957_1_anniversaire2021.png', 'APF', 1000, NULL, '2021-01-22 22:00:00', '2021-05-13 15:18:51', NULL, 'VALIDE'),
 	(12, 3, 'PORC AU FOUR', 'produit_1620598005_1_banner-bg__.jpg', 'lkjlkj', 500, NULL, '2021-01-22 22:00:00', '2021-05-13 00:54:45', '2021-05-12 21:01:18', 'VALIDE'),
-	(14, 3, 'SOUPE DE POISSON', 'produit_1620614431_1_anniversaire2021.png', 'SOUPE DE POISSON', 1000, NULL, '2021-01-22 22:00:00', '2021-05-13 10:22:50', NULL, 'VALIDE');
+	(14, 3, 'SOUPE DE POISSON', 'produit_1620614431_1_anniversaire2021.png', 'SOUPE DE POISSON', 1000, NULL, '2021-01-22 22:00:00', '2021-05-13 10:22:50', NULL, 'VALIDE'),
+	(16, 3, 'riz sauce graine', 'produit_1624290093_2_FB_IMG_1622746520606.jpg', 'c\'est un bon plat ivoirien', 100, NULL, '2021-06-21 15:41:33', NULL, NULL, 'VALIDE');
 /*!40000 ALTER TABLE `produit` ENABLE KEYS */;
 
 -- Listage de la structure de la table dipcommerce_db. tb_action
@@ -203,7 +244,11 @@ CREATE TABLE IF NOT EXISTS `tb_action` (
   `action_date_creation` datetime DEFAULT NULL,
   `action_statut` enum('VALIDE','SUPPRIME') DEFAULT 'VALIDE',
   PRIMARY KEY (`action_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- Listage des données de la table dipcommerce_db.tb_action : 0 rows
+/*!40000 ALTER TABLE `tb_action` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_action` ENABLE KEYS */;
 
 -- Listage de la structure de la table dipcommerce_db. tb_autorisation
 CREATE TABLE IF NOT EXISTS `tb_autorisation` (
@@ -215,7 +260,11 @@ CREATE TABLE IF NOT EXISTS `tb_autorisation` (
   `autorisation_statut` enum('VALIDE','DESACTIVE') DEFAULT 'VALIDE',
   PRIMARY KEY (`autorisation_id`),
   UNIQUE KEY `Index 1` (`action_id`,`profil_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- Listage des données de la table dipcommerce_db.tb_autorisation : 0 rows
+/*!40000 ALTER TABLE `tb_autorisation` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_autorisation` ENABLE KEYS */;
 
 -- Listage de la structure de la table dipcommerce_db. tb_password_resets
 CREATE TABLE IF NOT EXISTS `tb_password_resets` (
@@ -237,7 +286,7 @@ CREATE TABLE IF NOT EXISTS `tb_profil` (
   PRIMARY KEY (`profil_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table dipcommerce_db.tb_profil : 12 rows
+-- Listage des données de la table dipcommerce_db.tb_profil : 2 rows
 /*!40000 ALTER TABLE `tb_profil` DISABLE KEYS */;
 INSERT INTO `tb_profil` (`profil_id`, `profil_libelle`, `profil_statut`) VALUES
 	(1, 'ADMINISTRATEUR', 'VALIDE'),
@@ -251,8 +300,73 @@ CREATE TABLE IF NOT EXISTS `tb_request` (
   `request_querystring` varchar(255) DEFAULT NULL,
   `request_statut` enum('BON','FAUX','BROUILLON') DEFAULT 'BROUILLON',
   PRIMARY KEY (`request_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
 
+-- Listage des données de la table dipcommerce_db.tb_request : 61 rows
+/*!40000 ALTER TABLE `tb_request` DISABLE KEYS */;
+INSERT INTO `tb_request` (`request_id`, `request_url`, `request_querystring`, `request_statut`) VALUES
+	(1, 'http://webapp.test/images/produits/produit_1620598005_1_banner-bg__.jpg', 'images/produits/produit_1620598005_1_banner-bg__.jpg', 'BROUILLON'),
+	(2, 'http://webapp.test/images/produits/produit_1620614431_1_anniversaire2021.png', 'images/produits/produit_1620614431_1_anniversaire2021.png', 'BROUILLON'),
+	(3, 'http://webapp.test/images/produits/produit_1620613957_1_anniversaire2021.png', 'images/produits/produit_1620613957_1_anniversaire2021.png', 'BROUILLON'),
+	(4, 'http://webapp.test/css/select2.png', 'css/select2.png', 'BROUILLON'),
+	(5, 'http://webapp.test/css/select2.png', 'css/select2.png', 'BROUILLON'),
+	(6, 'http://webapp.test/css/select2-spinner.gif', 'css/select2-spinner.gif', 'BROUILLON'),
+	(7, 'http://webapp.test/images/produits/produit_1620598005_1_banner-bg__.jpg', 'images/produits/produit_1620598005_1_banner-bg__.jpg', 'BROUILLON'),
+	(8, 'http://webapp.test/images/produits/produit_1620614431_1_anniversaire2021.png', 'images/produits/produit_1620614431_1_anniversaire2021.png', 'BROUILLON'),
+	(9, 'http://webapp.test/images/produits/produit_1620613957_1_anniversaire2021.png', 'images/produits/produit_1620613957_1_anniversaire2021.png', 'BROUILLON'),
+	(10, 'http://webapp.test/css/select2.png', 'css/select2.png', 'BROUILLON'),
+	(11, 'http://webapp.test/images/produits/produit_1620598005_1_banner-bg__.jpg', 'images/produits/produit_1620598005_1_banner-bg__.jpg', 'BROUILLON'),
+	(12, 'http://webapp.test/images/produits/produit_1620613957_1_anniversaire2021.png', 'images/produits/produit_1620613957_1_anniversaire2021.png', 'BROUILLON'),
+	(13, 'http://webapp.test/images/produits/produit_1620614431_1_anniversaire2021.png', 'images/produits/produit_1620614431_1_anniversaire2021.png', 'BROUILLON'),
+	(14, 'http://webapp.test/css/select2.png', 'css/select2.png', 'BROUILLON'),
+	(15, 'http://webapp.test/images/produits/produit_1620613957_1_anniversaire2021.png', 'images/produits/produit_1620613957_1_anniversaire2021.png', 'BROUILLON'),
+	(16, 'http://webapp.test/images/produits/produit_1620598005_1_banner-bg__.jpg', 'images/produits/produit_1620598005_1_banner-bg__.jpg', 'BROUILLON'),
+	(17, 'http://webapp.test/images/produits/produit_1620614431_1_anniversaire2021.png', 'images/produits/produit_1620614431_1_anniversaire2021.png', 'BROUILLON'),
+	(18, 'http://webapp.test/css/select2.png', 'css/select2.png', 'BROUILLON'),
+	(19, 'http://webapp.test/images/produits/produit_1620598005_1_banner-bg__.jpg', 'images/produits/produit_1620598005_1_banner-bg__.jpg', 'BROUILLON'),
+	(20, 'http://webapp.test/images/produits/produit_1620614431_1_anniversaire2021.png', 'images/produits/produit_1620614431_1_anniversaire2021.png', 'BROUILLON'),
+	(21, 'http://webapp.test/images/produits/produit_1620613957_1_anniversaire2021.png', 'images/produits/produit_1620613957_1_anniversaire2021.png', 'BROUILLON'),
+	(22, 'http://webapp.test/css/select2.png', 'css/select2.png', 'BROUILLON'),
+	(23, 'http://webapp.test/password/eventually.ogg', 'password/eventually.ogg', 'BROUILLON'),
+	(24, 'http://webapp.test/password/eventually.mp3', 'password/eventually.mp3', 'BROUILLON'),
+	(25, 'http://webapp.test/images/produits/produit_1620598005_1_banner-bg__.jpg', 'images/produits/produit_1620598005_1_banner-bg__.jpg', 'BROUILLON'),
+	(26, 'http://webapp.test/images/produits/produit_1620613957_1_anniversaire2021.png', 'images/produits/produit_1620613957_1_anniversaire2021.png', 'BROUILLON'),
+	(27, 'http://webapp.test/css/select2.png', 'css/select2.png', 'BROUILLON'),
+	(28, 'http://webapp.test/images/produits/produit_1620598005_1_banner-bg__.jpg', 'images/produits/produit_1620598005_1_banner-bg__.jpg', 'BROUILLON'),
+	(29, 'http://webapp.test/images/produits/produit_1620614431_1_anniversaire2021.png', 'images/produits/produit_1620614431_1_anniversaire2021.png', 'BROUILLON'),
+	(30, 'http://webapp.test/images/produits/produit_1620613957_1_anniversaire2021.png', 'images/produits/produit_1620613957_1_anniversaire2021.png', 'BROUILLON'),
+	(31, 'http://webapp.test/css/select2.png', 'css/select2.png', 'BROUILLON'),
+	(32, 'http://webapp.test/images/produits/produit_1620598005_1_banner-bg__.jpg', 'images/produits/produit_1620598005_1_banner-bg__.jpg', 'BROUILLON'),
+	(33, 'http://webapp.test/images/produits/produit_1620613957_1_anniversaire2021.png', 'images/produits/produit_1620613957_1_anniversaire2021.png', 'BROUILLON'),
+	(34, 'http://webapp.test/images/produits/produit_1620614431_1_anniversaire2021.png', 'images/produits/produit_1620614431_1_anniversaire2021.png', 'BROUILLON'),
+	(35, 'http://webapp.test/css/select2x2.png', 'css/select2x2.png', 'BROUILLON'),
+	(36, 'http://webapp.test/css/select2.png', 'css/select2.png', 'BROUILLON'),
+	(37, 'http://webapp.test/images/produits/produit_1620598005_1_banner-bg__.jpg', 'images/produits/produit_1620598005_1_banner-bg__.jpg', 'BROUILLON'),
+	(38, 'http://webapp.test/images/produits/produit_1620614431_1_anniversaire2021.png', 'images/produits/produit_1620614431_1_anniversaire2021.png', 'BROUILLON'),
+	(39, 'http://webapp.test/images/produits/produit_1620613957_1_anniversaire2021.png', 'images/produits/produit_1620613957_1_anniversaire2021.png', 'BROUILLON'),
+	(40, 'http://webapp.test/css/select2.png', 'css/select2.png', 'BROUILLON'),
+	(41, 'http://webapp.test/images/produits/produit_1620614431_1_anniversaire2021.png', 'images/produits/produit_1620614431_1_anniversaire2021.png', 'BROUILLON'),
+	(42, 'http://webapp.test/images/produits/produit_1620613957_1_anniversaire2021.png', 'images/produits/produit_1620613957_1_anniversaire2021.png', 'BROUILLON'),
+	(43, 'http://webapp.test/css/select2.png', 'css/select2.png', 'BROUILLON'),
+	(44, 'http://webapp.test/images/produits/produit_1620614431_1_anniversaire2021.png', 'images/produits/produit_1620614431_1_anniversaire2021.png', 'BROUILLON'),
+	(45, 'http://webapp.test/images/produits/produit_1620598005_1_banner-bg__.jpg', 'images/produits/produit_1620598005_1_banner-bg__.jpg', 'BROUILLON'),
+	(46, 'http://webapp.test/images/produits/produit_1620613957_1_anniversaire2021.png', 'images/produits/produit_1620613957_1_anniversaire2021.png', 'BROUILLON'),
+	(47, 'http://webapp.test/css/select2.png', 'css/select2.png', 'BROUILLON'),
+	(48, 'http://webapp.test/images/produits/produit_1620614431_1_anniversaire2021.png', 'images/produits/produit_1620614431_1_anniversaire2021.png', 'BROUILLON'),
+	(49, 'http://webapp.test/images/produits/produit_1620598005_1_banner-bg__.jpg', 'images/produits/produit_1620598005_1_banner-bg__.jpg', 'BROUILLON'),
+	(50, 'http://webapp.test/images/produits/produit_1620613957_1_anniversaire2021.png', 'images/produits/produit_1620613957_1_anniversaire2021.png', 'BROUILLON'),
+	(51, 'http://webapp.test/css/select2.png', 'css/select2.png', 'BROUILLON'),
+	(52, 'http://webapp.test/images/produits/produit_1620613957_1_anniversaire2021.png', 'images/produits/produit_1620613957_1_anniversaire2021.png', 'BROUILLON'),
+	(53, 'http://webapp.test/images/produits/produit_1620598005_1_banner-bg__.jpg', 'images/produits/produit_1620598005_1_banner-bg__.jpg', 'BROUILLON'),
+	(54, 'http://webapp.test/images/produits/produit_1620614431_1_anniversaire2021.png', 'images/produits/produit_1620614431_1_anniversaire2021.png', 'BROUILLON'),
+	(55, 'http://webapp.test/css/select2.png', 'css/select2.png', 'BROUILLON'),
+	(56, 'http://webapp.test/css/select2.png', 'css/select2.png', 'BROUILLON'),
+	(57, 'http://webapp.test/css/select2-spinner.gif', 'css/select2-spinner.gif', 'BROUILLON'),
+	(58, 'http://webapp.test/images/produits/produit_1620613957_1_anniversaire2021.png', 'images/produits/produit_1620613957_1_anniversaire2021.png', 'BROUILLON'),
+	(59, 'http://webapp.test/images/produits/produit_1620598005_1_banner-bg__.jpg', 'images/produits/produit_1620598005_1_banner-bg__.jpg', 'BROUILLON'),
+	(60, 'http://webapp.test/images/produits/produit_1620614431_1_anniversaire2021.png', 'images/produits/produit_1620614431_1_anniversaire2021.png', 'BROUILLON'),
+	(61, 'http://webapp.test/css/select2.png', 'css/select2.png', 'BROUILLON');
+/*!40000 ALTER TABLE `tb_request` ENABLE KEYS */;
 
 -- Listage de la structure de la table dipcommerce_db. tb_service
 CREATE TABLE IF NOT EXISTS `tb_service` (
@@ -264,7 +378,11 @@ CREATE TABLE IF NOT EXISTS `tb_service` (
   `service_statut_autorisation_imputation_dg` enum('AUTORISE','NON AUTORISE') DEFAULT 'NON AUTORISE',
   `service_statut` enum('BROUILLON','VALIDE','SUPPRIME') DEFAULT 'VALIDE',
   PRIMARY KEY (`service_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='Ex : Bureau urbain, antenne de san pédro, Siège, etc.';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Ex : Bureau urbain, antenne de san pédro, Siège, etc.';
+
+-- Listage des données de la table dipcommerce_db.tb_service : 0 rows
+/*!40000 ALTER TABLE `tb_service` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_service` ENABLE KEYS */;
 
 -- Listage de la structure de la table dipcommerce_db. tb_users
 CREATE TABLE IF NOT EXISTS `tb_users` (
@@ -300,7 +418,7 @@ CREATE TABLE IF NOT EXISTS `tb_users` (
 -- Listage des données de la table dipcommerce_db.tb_users : 2 rows
 /*!40000 ALTER TABLE `tb_users` DISABLE KEYS */;
 INSERT INTO `tb_users` (`id`, `profil_id`, `service_id`, `categorie_personnel_id`, `type_personnel_id`, `equipe_id`, `bureauID`, `nom`, `prenoms`, `civilite`, `date_naissance`, `telephone`, `matricule`, `photo`, `adresse_email`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `ip_derniere_connexion`, `date_derniere_connexion`, `statut_connexion`, `statut_signature`, `statut`) VALUES
-	(2, 4, 1, 4, 1, 0, 0, 'TAMON', 'DIMITRI', 'M.', '2020-06-06', '', NULL, '', '', 'dimitri', '$2y$10$fZhXFwI.ut.FPElsY9Fk1eItums4OvPFpD.AqAqTD43x8ZPZQAmG2', 'iUQFOf5PPLP2PyYFgLouCVIuUEYRXJ22VXJbYaVfF24qAxkb7KSDEpAvm9xH', '2021-03-10 00:00:00', '2021-04-27 19:07:41', '127.0.0.1', '2021-04-27 19:07:41', 'CONNECTE', NULL, 'VALIDE'),
+	(2, 1, 1, 4, 1, 0, 0, 'BOUSSOU', 'JUSTE', 'M.', '2020-06-06', '', NULL, 'ph2_1624290376317IMG_20210607_164641.jpg', '', 'juste', '$2y$10$fZhXFwI.ut.FPElsY9Fk1eItums4OvPFpD.AqAqTD43x8ZPZQAmG2', 'iUQFOf5PPLP2PyYFgLouCVIuUEYRXJ22VXJbYaVfF24qAxkb7KSDEpAvm9xH', '2021-03-10 00:00:00', '2021-06-22 07:50:54', '127.0.0.1', '2021-06-22 07:50:54', 'CONNECTE', NULL, 'VALIDE'),
 	(1, 1, 1, 1, 1, 0, 0, 'KOUASSI', 'RICHMOND', 'M.', '2020-06-06', '0708031746', NULL, 'ph1_1620901561048ph4_1615373851975135160607_10164592007005223_8140133135769055267_o.jpg', '', 'richmond', '$2y$10$fZhXFwI.ut.FPElsY9Fk1eItums4OvPFpD.AqAqTD43x8ZPZQAmG2', 'I6gM3Uc9fZPk30q2PJh6UOLTnzNaiBU6LJJyh5HBuxXJc5bZRw7rL1nAL1z7', '2021-03-10 00:00:00', '2021-05-13 16:38:42', '127.0.0.1', '2021-05-13 16:38:42', 'CONNECTE', NULL, 'VALIDE');
 /*!40000 ALTER TABLE `tb_users` ENABLE KEYS */;
 
@@ -314,9 +432,9 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `utilisateur_password` varchar(50) DEFAULT NULL,
   `utilisateur_statut` enum('BROUILLON','VALIDE','SUPPRIME') DEFAULT 'VALIDE',
   PRIMARY KEY (`utilisateur_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table dipcommerce_db.utilisateur : ~3 rows (environ)
+-- Listage des données de la table dipcommerce_db.utilisateur : ~0 rows (environ)
 /*!40000 ALTER TABLE `utilisateur` DISABLE KEYS */;
 INSERT INTO `utilisateur` (`utilisateur_id`, `utilisateur_nom`, `utilisateur_prenoms`, `utilisateur_telephone`, `utilisateur_login`, `utilisateur_password`, `utilisateur_statut`) VALUES
 	(1, NULL, NULL, '0708031746', 'edgard', NULL, NULL);
@@ -325,3 +443,4 @@ INSERT INTO `utilisateur` (`utilisateur_id`, `utilisateur_nom`, `utilisateur_pre
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+reunionreunionreunion

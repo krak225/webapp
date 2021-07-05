@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 	<ul class="breadcrumb no-border no-radius b-b b-light pull-in"> 
 	<li class="active"><i class="fa fa-home"></i> Accueil</li>
@@ -17,7 +15,7 @@
 					<i class="fa fa-circle fa-stack-2x text-warning"></i> 
 					<i class="fa fa-list fa-stack-1x text-white"></i> 
 				</span>
-				<a class="clear" href="{{ route('produits') }}"> 
+				<a class="clear" href="<?php echo e(route('produits')); ?>"> 
 					<span class="h3 block m-t-xs"><strong>PRODUITS</strong></span> 
 					<small class="text-muted text-uc">Gestion de stock</small> 
 				</a> 
@@ -28,7 +26,7 @@
 					<i class="fa fa-circle fa-stack-2x text-warning"></i> 
 					<i class="fa fa-list fa-stack-1x text-white"></i> 
 				</span>
-				<a class="clear" href="{{ route('participants') }}"> 
+				<a class="clear" href="<?php echo e(route('participants')); ?>"> 
 					<span class="h3 block m-t-xs"><strong>LISTE DE PRESENCE</strong></span> 
 					<small class="text-muted text-uc">Gestion de reunion</small> 
 				</a> 
@@ -45,4 +43,6 @@
 	</section> 
 	
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

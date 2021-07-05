@@ -2,23 +2,23 @@
 <html lang="fr" class=" ">
 <head> 
 	<meta charset="utf-8" />
-	<title>{{ config('app.title') }}</title>
+	<title><?php echo e(config('app.title')); ?></title>
 	<meta name="description" content="Web app by Richmond KOUASSI (krak225@gmail.com)" /> 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<link rel="stylesheet" href="{{ asset('css/select2.css')}}" type="text/css"/>	
-	<link rel="stylesheet" href="{{ asset('css/font.css') }}" type="text/css" /> 
-	<link rel="stylesheet" href="{{ asset('js/datatables/datatables.css') }}" type="text/css"/> 
-	<link rel="stylesheet" href="{{ asset('css/app.v1_vert.css') }}" type="text/css" /> 
-	<!--link rel="stylesheet" href="{{ asset('css/app.v1_orange.css') }}" type="text/css" /--> 
-	<link rel="stylesheet" href="{{ asset('js/fuelux/fuelux.css')}}" type="text/css"/>
-	<link rel="stylesheet" href="{{ asset('css/krakPopup.css')}}"/>	
-	<link rel="stylesheet" href="{{ asset('css/todo.css')}}"/>	
+	<link rel="stylesheet" href="<?php echo e(asset('css/select2.css')); ?>" type="text/css"/>	
+	<link rel="stylesheet" href="<?php echo e(asset('css/font.css')); ?>" type="text/css" /> 
+	<link rel="stylesheet" href="<?php echo e(asset('js/datatables/datatables.css')); ?>" type="text/css"/> 
+	<link rel="stylesheet" href="<?php echo e(asset('css/app.v1_vert.css')); ?>" type="text/css" /> 
+	<!--link rel="stylesheet" href="<?php echo e(asset('css/app.v1_orange.css')); ?>" type="text/css" /--> 
+	<link rel="stylesheet" href="<?php echo e(asset('js/fuelux/fuelux.css')); ?>" type="text/css"/>
+	<link rel="stylesheet" href="<?php echo e(asset('css/krakPopup.css')); ?>"/>	
+	<link rel="stylesheet" href="<?php echo e(asset('css/todo.css')); ?>"/>	
 	
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/contextual.theme.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/contextual.css') }}">
+	<link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/contextual.theme.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/contextual.css')); ?>">
 	
-    <!--link rel="stylesheet" type="text/css" href="{{ asset('css/summernote/summernote.js') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/summernote/summernote.css') }}"-->
+    <!--link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/summernote/summernote.js')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/summernote/summernote.css')); ?>"-->
 	<style>
 		.div-button{
 			display: flex;
@@ -35,7 +35,7 @@
 	<script src="js/ie/excanvas.js"></script> 
 	<![endif]-->
 	<!-- CSRF Token -->
-	<meta name="csrf-token" content="{{ csrf_token() }}">
+	<meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 	<script type="text/javascript">
 		var csrf_token   =   $('meta[name="csrf-token"]').attr('content');
 		$.ajaxSetup({
@@ -50,9 +50,9 @@
 		<header class="bg-primary header navbar navbar-fixed-top-xs"> 
 		
 		<!--div class="navbar-header aside-md tex"> 
-		<span style="background:white url({{ asset('images/logo.png') }}) center no-repeat;background-size:contain;display:block;border:3px solid 029838;"> 
+		<span style="background:white url(<?php echo e(asset('images/logo.png')); ?>) center no-repeat;background-size:contain;display:block;border:3px solid 029838;"> 
 			<a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html"> <i class="fa fa-bars"></i> </a> 
-			<a href="{{ route('home') }}" class="navbar-brand">
+			<a href="<?php echo e(route('home')); ?>" class="navbar-brand">
 			
 			</a> 
 			<a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user"> <i class="fa fa-cog"></i> </a> 
@@ -63,7 +63,8 @@
 		<a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html" style="color:orange"> 
 		<i class="fa fa-bars"></i> </a> 
 		<a href="#" class="navbar-brand" data-toggle="fullscreen" style="font-size:12px;background:white;color:orange">
-		{{ config('app.name') }}
+		<?php echo e(config('app.name')); ?>
+
 		</a>
 		<a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user" style="color:orange"> 
 		<i class="fa fa-cog"></i> 
@@ -74,47 +75,48 @@
 		 <ul class="nav navbar-nav hidden-xs"> 
 			<li class="dropdown"> 
 				<a href="#" class="dropdown-toggle dker" data-toggle="dropdown"> <i class="fa fa-building-o"></i> 
-					<span class="font-bold">{{ config('app.subtitle') }}</span> 
+					<span class="font-bold"><?php echo e(config('app.subtitle')); ?></span> 
 				</a> 				 
 			 </li> 
 			<li> 
 				<div class="m-t m-l"> 
-					<a href="#" class="dropdown-toggle btn btn-xs btn-primary" title="Upgrade">{{ config('app.version') }}</a> 
+					<a href="#" class="dropdown-toggle btn btn-xs btn-primary" title="Upgrade"><?php echo e(config('app.version')); ?></a> 
 				</div>
 			</li> 
 		 </ul> 
 		 <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user"> 
-		 @auth
+		 <?php if(auth()->guard()->check()): ?>
 		 <li class="dropdown"> 
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
 			<span class="thumb-sm avatar pull-left">
-			@if(File::exists('images/'. Auth::user()->photo ) && !is_dir('images/'. Auth::user()->photo))
-			<img src="{{ asset('images/'. Auth::user()->photo ) }}" alt=""/>
-			@else
-			<img src="{{ asset('images/avatar.jpg') }}"/>
-			@endif
+			<?php if(File::exists('images/'. Auth::user()->photo ) && !is_dir('images/'. Auth::user()->photo)): ?>
+			<img src="<?php echo e(asset('images/'. Auth::user()->photo )); ?>" alt=""/>
+			<?php else: ?>
+			<img src="<?php echo e(asset('images/avatar.jpg')); ?>"/>
+			<?php endif; ?>
 			
-			</span> {{ Auth::user()->nom . ' ' . Auth::user()->prenoms }} <b class="caret"></b> 
+			</span> <?php echo e(Auth::user()->nom . ' ' . Auth::user()->prenoms); ?> <b class="caret"></b> 
 			</a> 
 			<ul class="dropdown-menu animated fadeInRight"> 
 				<span class="arrow top"></span> 
-				<li> <a href="{{ route('profile') }}">Mon compte</a> </li> 
-				<li> <a href="{{ route('updatePassword') }}">Mot de passe</a> </li> 
+				<li> <a href="<?php echo e(route('profile')); ?>">Mon compte</a> </li> 
+				<li> <a href="<?php echo e(route('updatePassword')); ?>">Mot de passe</a> </li> 
 				<li class="divider"></li> 
 				
 				<li>
-					<a href="{{ route('logout') }}"
+					<a href="<?php echo e(route('logout')); ?>"
 					onclick="event.preventDefault();
 							 document.getElementById('logout-form').submit();">
 					Se déconnecter
 					</a>
-					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-						{{ csrf_field() }}
+					<form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+						<?php echo e(csrf_field()); ?>
+
 					</form>
 				</li>
 			</ul> 
 		 </li>
-		 @endauth
+		 <?php endif; ?>
 		 </ul> 
 		 </header> 
 		 <section> 
@@ -132,9 +134,9 @@
 											MENU PRINCIPAL
 										</div> 
 									</li>
-									@auth
+									<?php if(auth()->guard()->check()): ?>
 
-									<li class="@if(Request::is('categories')) active @endif"> 
+									<li class="<?php if(Request::is('categories')): ?> active <?php endif; ?>"> 
 										 <a href="#" class=""> 
 											 <i class="fa fa-cogs icon"> 
 											 <b class="bg-info"></b> </i> 
@@ -146,14 +148,14 @@
 										 </a> 
 										 <ul class="nav lt"> 
 											<li class=""> 
-												<a href="{{route('categories')}}" class="active"> 
+												<a href="<?php echo e(route('categories')); ?>" class="active"> 
 												<i class="fa fa-angle-right"></i> 
 												<span>Tous les catégories</span> </a> 
 											</li> 
 										 </ul> 
 									</li>
 
-									<li class="@if(Request::is('produits')) active @endif"> 
+									<li class="<?php if(Request::is('produits')): ?> active <?php endif; ?>"> 
 										 <a href="#" class=""> 
 											 <i class="fa fa-list icon"> 
 											 <b class="bg-info"></b> </i> 
@@ -165,19 +167,19 @@
 										 </a> 
 										 <ul class="nav lt"> 
 											<li class=""> 
-												<a href="{{route('produits')}}" class="active"> 
+												<a href="<?php echo e(route('produits')); ?>" class="active"> 
 												<i class="fa fa-angle-right"></i> 
 												<span>Tous les produits</span> </a> 
 											</li> 
 											<!--li class=""> 
-												<a href="{{route('produits')}}" class="active"> 
+												<a href="<?php echo e(route('produits')); ?>" class="active"> 
 												<i class="fa fa-angle-right"></i> 
 												<span>Enregistrer un produits</span> </a> 
 											</li--> 
 										 </ul> 
 									</li>
 
-									<li class="@if(Request::is('commandes')) active @endif"> 
+									<li class="<?php if(Request::is('commandes')): ?> active <?php endif; ?>"> 
 										 <a href="#" class=""> 
 											 <i class="fa fa-list icon"> 
 											 <b class="bg-info"></b> </i> 
@@ -189,17 +191,17 @@
 										 </a> 
 										 <ul class="nav lt"> 
 											<li class=""> 
-												<a href="{{route('commandes')}}" class="active"> 
+												<a href="<?php echo e(route('commandes')); ?>" class="active"> 
 												<i class="fa fa-angle-right"></i> 
 												<span>Toutes les commandes</span> </a> 
 											</li> 
 											<!--li class=""> 
-												<a href="{{route('commandes')}}" class="active"> 
+												<a href="<?php echo e(route('commandes')); ?>" class="active"> 
 												<i class="fa fa-angle-right"></i> 
 												<span>Commandes livrées</span> </a> 
 											</li> 
 											<li class=""> 
-												<a href="{{route('commandes')}}" class="active"> 
+												<a href="<?php echo e(route('commandes')); ?>" class="active"> 
 												<i class="fa fa-angle-right"></i> 
 												<span>Commandes non livrées</span> </a> 
 											</li-->
@@ -207,7 +209,7 @@
 									</li>
 
 
-									<li class="@if(Request::is('courses')) active @endif"> 
+									<li class="<?php if(Request::is('courses')): ?> active <?php endif; ?>"> 
 										 <a href="#" class=""> 
 											 <i class="fa fa-list icon"> 
 											 <b class="bg-info"></b> </i> 
@@ -219,26 +221,26 @@
 										 </a> 
 										 <ul class="nav lt"> 
 											<li class=""> 
-												<a href="{{route('courses')}}" class="active"> 
+												<a href="<?php echo e(route('courses')); ?>" class="active"> 
 												<i class="fa fa-angle-right"></i> 
 												<span>Toutes les courses</span> </a> 
 											</li> 
 											<!--li class=""> 
-												<a href="{{route('courses')}}" class="active"> 
+												<a href="<?php echo e(route('courses')); ?>" class="active"> 
 												<i class="fa fa-angle-right"></i> 
 												<span>Courses livrées</span> </a> 
 											</li> 
 											<li class=""> 
-												<a href="{{route('courses')}}" class="active"> 
+												<a href="<?php echo e(route('courses')); ?>" class="active"> 
 												<i class="fa fa-angle-right"></i> 
 												<span>Courses non livrées</span> </a> 
 											</li-->
 										 </ul> 
 									</li>
 
-									{{-- liste des reunions --}}
+									
 
-									<li class="@if(Request::is('reunion')) active @endif"> 
+									<li class="<?php if(Request::is('reunion')): ?> active <?php endif; ?>"> 
 										<a href="#" class=""> 
 											<i class="fa fa-list icon"> 
 											<b class="bg-info"></b> </i> 
@@ -250,14 +252,14 @@
 										</a> 
 										<ul class="nav lt"> 
 										   <li class=""> 
-											   <a href="{{route('reunion')}}" class="active"> 
+											   <a href="<?php echo e(route('reunion')); ?>" class="active"> 
 											   <i class="fa fa-angle-right"></i> 
 											   <span>Tous les reunions</span> </a> 
 										   </li> 
 										</ul> 
 								   </li>
-										   {{-- liste des participants --}}
-									<li class="@if(Request::is('participants')) active @endif"> 
+										   
+									<li class="<?php if(Request::is('participants')): ?> active <?php endif; ?>"> 
 										<a href="#" class=""> 
 											<i class="fa fa-list icon"> 
 											<b class="bg-info"></b> </i> 
@@ -269,22 +271,22 @@
 										</a> 
 										<ul class="nav lt"> 
 										   <li class=""> 
-											   <a href="{{route('participants')}}" class="active"> 
+											   <a href="<?php echo e(route('participants')); ?>" class="active"> 
 											   <i class="fa fa-angle-right"></i> 
 											   <span>Tous les participants</span> </a> 
 										   </li> 
 										</ul> 
 								   </li>
 
-									@else
+									<?php else: ?>
 									<li> 
-										<a href="{{ route('login') }}" class="active"> 
+										<a href="<?php echo e(route('login')); ?>" class="active"> 
 											<i class="fa fa-columns icon"> 
 											<b class="bg-info"></b> </i>
 											<span>Se connecter</span> 
 										</a> 
 									</li>
-									@endauth
+									<?php endif; ?>
 									
 								</ul>
 								
@@ -310,7 +312,7 @@
 							
 							<!----> 
 							
-							@yield('content')
+							<?php echo $__env->yieldContent('content'); ?>
 							
 							<!----> 
 							
@@ -339,40 +341,40 @@
 
 	 
 	 <!-- App --> 
-	 <script src="{{ asset('js/app.v1.js') }}"></script> 
-	 <script src="{{ asset('js/datatables/jquery.dataTables.min.js') }}"></script>
-	 <script src="{{ asset('js/datatables/jquery.csv-0.71.min.js') }}"></script>
-	 <script src="{{ asset('js/kraksoft.js') }}"></script> 
-	 <script src="{{ asset('js/pubnub.js') }}"></script> 
-	 <script src="{{ asset('js/app.plugin.js') }}"></script> 
+	 <script src="<?php echo e(asset('js/app.v1.js')); ?>"></script> 
+	 <script src="<?php echo e(asset('js/datatables/jquery.dataTables.min.js')); ?>"></script>
+	 <script src="<?php echo e(asset('js/datatables/jquery.csv-0.71.min.js')); ?>"></script>
+	 <script src="<?php echo e(asset('js/kraksoft.js')); ?>"></script> 
+	 <script src="<?php echo e(asset('js/pubnub.js')); ?>"></script> 
+	 <script src="<?php echo e(asset('js/app.plugin.js')); ?>"></script> 
 	 
 	 <!-- fuelux -->
-	 <script src="{{asset('js/fuelux/fuelux.js') }}"></script>
-	 <script src="{{asset('js/parsley/parsley.min.js') }}"></script>
+	 <script src="<?php echo e(asset('js/fuelux/fuelux.js')); ?>"></script>
+	 <script src="<?php echo e(asset('js/parsley/parsley.min.js')); ?>"></script>
 	 
 	 
-	 <script src="{{asset('js/jquery.mask.js') }}"></script>
-	 <script src="{{asset('js/select2.js') }}"></script>
+	 <script src="<?php echo e(asset('js/jquery.mask.js')); ?>"></script>
+	 <script src="<?php echo e(asset('js/select2.js')); ?>"></script>
 	 
-	 <script src="{{asset('js/todo_drag.js') }}"></script>
+	 <script src="<?php echo e(asset('js/todo_drag.js')); ?>"></script>
 	 
-	<script src="{{asset('js/jquery-ui-1.10.3.custom.min.js') }}"></script>
-	<script src="{{asset('js/jquery.krakPopup.js') }}"></script>
+	<script src="<?php echo e(asset('js/jquery-ui-1.10.3.custom.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('js/jquery.krakPopup.js')); ?>"></script>
 	 
-	<script src="{{ asset('js/noty/jquery.noty.js') }}"></script>
-	<script src="{{ asset('js/noty/layouts/bottomCenter.js') }}"></script>
-	<script src="{{ asset('js/noty/layouts/topRight.js') }}"></script>
-	<script src="{{ asset('js/noty/layouts/top.js') }}"></script>
-	<script src="{{ asset('js/noty/layouts/center.js') }}"></script>
-	<script src="{{ asset('js/noty/themes/default.js') }}"></script>
+	<script src="<?php echo e(asset('js/noty/jquery.noty.js')); ?>"></script>
+	<script src="<?php echo e(asset('js/noty/layouts/bottomCenter.js')); ?>"></script>
+	<script src="<?php echo e(asset('js/noty/layouts/topRight.js')); ?>"></script>
+	<script src="<?php echo e(asset('js/noty/layouts/top.js')); ?>"></script>
+	<script src="<?php echo e(asset('js/noty/layouts/center.js')); ?>"></script>
+	<script src="<?php echo e(asset('js/noty/themes/default.js')); ?>"></script>
 	
-	<script src="{{ asset('js/contextual.js') }}"></script>
+	<script src="<?php echo e(asset('js/contextual.js')); ?>"></script>
 
 	
 	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 	
-	<input type="hidden" id="eco_base_url" value="{{'http://'.$_SERVER['HTTP_HOST']}}/">
+	<input type="hidden" id="eco_base_url" value="<?php echo e('http://'.$_SERVER['HTTP_HOST']); ?>/">
 
 		<script>
 				

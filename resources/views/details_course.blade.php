@@ -53,7 +53,7 @@ ul.no_liste_item li {
 
 .bold{font-weight:bold;}
 
--->
+
 </style>
 
 <div class="panel panel-default"> 

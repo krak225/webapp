@@ -22,8 +22,8 @@ class SecurityController extends Controller
     public function SaveRoutes($data, Request $request)
     {
 		
-		$rd 	  					= new RequestData();
-		$rd->request_url 			= $request->url();
+		$rd 	  					        = new RequestData();
+		$rd->request_url 	    		= $request->url();
 		$rd->request_querystring 	= $data;
 		$rd->save();
 		

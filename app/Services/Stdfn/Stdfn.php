@@ -2,9 +2,7 @@
 
 namespace App\Services\Stdfn;
 // use Illuminate\Http\Request;
-use App\Etablissement;
-use App\Pointage;
-use App\UserProfilApplication;
+
 use DB;
 use Auth;
 

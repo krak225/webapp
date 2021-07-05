@@ -12,11 +12,17 @@
 */
 
 //le tout
+
+use App\Http\Controllers\ParticipantController;
+use App\Http\Controllers\ReunionController;
+
 Auth::routes();
 
 Route::get('/','HomeController@index')->name('accueil');
 Route::get('/home','HomeController@index')->name('home');
 Route::get('/produit/','HomeController@produitHome')->name('produitHome');
+
+
 
 
 Route::get('/profile','UserController@profile')->name('profile');
@@ -31,7 +37,6 @@ Route::post('/profile/upload_image','UserController@upload_image')->name('upload
 Route::get('/showpiecejointe/{id}','MediaController@ShowPieceJointe')->name('ShowPieceJointe');
 
 
-
 Route::get('courses','ParametresController@courses')->name('courses');
 Route::get('course/{course_id}','ParametresController@DetailsCourse')->name('DetailsCourse');
 Route::post('/setcourselivree','ParametresController@setcourselivree')->name('setcourselivree');
@@ -41,6 +46,8 @@ Route::get('commandes','ParametresController@commandes')->name('commandes');
 Route::get('commande/{commande_id}','ParametresController@DetailsCommande')->name('DetailsCommande');
 Route::post('/setcommandelivree','ParametresController@setcommandelivree')->name('setcommandelivree');
 
+
+// PRODUITS
 Route::get('produits','ParametresController@produits')->name('produits');
 Route::post('produits','ParametresController@SaveProduit')->name('SaveProduit');
 Route::get('produit/{produit_id}','ParametresController@DetailsProduit')->name('DetailsProduit');
@@ -51,10 +58,35 @@ Route::post('supprimer_produit','ParametresController@SupprimerProduit')->name('
 Route::post('upload_fichiers/{produit_id}','ParametresController@UpdateFichiers')->name('UpdateFichiers');
 Route::post('update_produit_photo/{produit_id}','ParametresController@UpdateProduitPhoto')->name('UpdateProduitPhoto');
 
-
+// CATEGORIES
 Route::get('categories','ParametresController@categories')->name('categories');
 Route::post('categories','ParametresController@SaveCategorie')->name('SaveCategorie');
 Route::post('supprimer_categorie','ParametresController@SupprimerCategorie')->name('SupprimerCategorie');
+
+
+// REUNION
+Route::get('reunion', 'ReunionController@reunion')->name('reunion');
+Route::post('reunion', 'ReunionController@SaveReunion')->name('SaveReunion');
+Route::get('reunion/{reunion_id}', 'ReunionController@DetailsReunion')->name('DetailsReunion');
+Route::get('modifier_reunion/{reunion_id}', 'ReunionController@ModifierReunion')->name('ModifierReunion');
+Route::post('modifier_reunion', 'ReunionController@SaveModifierReunion')->name('SaveModifierReunion');
+Route::post('supprimer_reunion', 'ReunionController@SupprimerReunion')->name('SupprimerReunion');
+Route::post('reunion_participant, ReunionController@SaveReunionParticipant')->name('ReunionParticipant');
+
+
+// LISTE DE PRESENCE DES PARTICIPANTS
+Route::get('participants', 'ParticipantController@participants')->name('participants');
+Route::post('participants', 'ParticipantController@SaveParticipant')->name('SaveParticipant');
+Route::get('participant/{participant_id}', 'ParticipantController@DetailsParticipant')->name('DetailsParticipant');
+Route::get('modifier_participant/{participant_id}', 'ParticipantController@ModifierParticipant')->name('ModifierParticipant');
+Route::post('modifier_participant', 'ParticipantController@SaveModifierParticipant')->name('SaveModifierParticipant');
+Route::post('supprimer_participant', 'ParticipantController@SupprimerParticipant')->name('SupprimerParticipant');
+// FIN LISTE DE PRESENCE
+
+
+
+
+
 
 
 
