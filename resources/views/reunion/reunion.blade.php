@@ -54,14 +54,14 @@
 					
 					<div class="col-md-12 row" style="display: flex; justify-content:space-between; margin-bottom:25px;">
 						
-						<div class="col-md-5">
-							<span> Ordre du jour<span class="text text-danger"></span></span>
-							<input style="padding-top:0px;" placeholder="" type="text" class="form-control" name="reunion_ordre_jour" value="{{ old('reunion_ordre_jour') }}" required>
+						<div class="col-md-5 form-group">
+							<span> Libellé<span class="text text-danger"></span></span>
+							<input style="padding-top:0px;" placeholder="" type="text" class="form-control" name="reunion_libelle" value="{{ old('reunion_libelle') }}" required>
 						</div>
 
-						<div class="col-md-5">
-							<span> Privé<span class="text text-danger"></span></span>
-							<input style="padding-top:0px;" placeholder="" type="text" class="form-control" name="reunion_pv" value="{{ old('reunion_pv') }}" required>
+						<div class="col-md-5 ">
+							<span> Ordre du jour<span class="text text-danger"></span></span><br>
+							<textarea name="reunion_ordre_jour" class="text-area" id="reunion_ordre_jour"  required >{{ old('reunion_ordre_jour') }}</textarea>
 						</div>
 						
 					</div>
@@ -103,8 +103,8 @@
 					<th width=""></th>
 					<th width=""></th>
 					<th width="">Numero</th>
+					<th width="">Libellé</th>
 					<th width="">Ordre du jour</th>
-					<th width="">pv</th>
 					<th width="">Date de creation</th>
 					<th width="">Action</th>
 				</tr> 
@@ -116,7 +116,7 @@
 					<td><span class="btnModifierReunion" data-reunion_id="{{$reunion->reunion_id}}" style="cursor: pointer;"><i class="fa fa-edit text-warning" title="Modifier"></i></span></td> 
 					<td>{{ $reunion->reunion_id }}</td>
 					<td>{{ $reunion->reunion_ordre_jour }}</td>
-					<td>{{ $reunion->reunion_pv }}</td>
+					<td>{{ $reunion->reunion_libelle }}</td>
 					<td>{{ Stdfn::dateFromDB($reunion->reunion_date_creation) }}</td>
 					<td><span class="btnSupprimerReunion" data-reunion_id="{{$reunion->reunion_id}}" style="cursor: pointer;"><i class="fa fa-times text-danger" title="Supprimer ce reunion"></i></a></td> 
 				</tr>	

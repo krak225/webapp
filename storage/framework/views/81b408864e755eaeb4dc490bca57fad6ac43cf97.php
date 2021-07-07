@@ -82,8 +82,8 @@ ul.no_liste_item li {
 							<i class="fa fa- icon-muted"></i> Odre du jour
 						</span>		
 						<span class="list-group-item"> 
-							<span class="badge bg-light"><?php echo e($reunion->reunion_pv); ?></span> 
-							<i class="fa fa- icon-muted"></i> pv
+							<span class="badge bg-light"><?php echo e($reunion->reunion_libelle); ?></span> 
+							<i class="fa fa- icon-muted"></i> Libellé
 						</span>		
 						<span class="list-group-item"> 
 							<span class="badge bg-light"><?php echo e(Stdfn::dateTimeFromDB($reunion->reunion_date_creation)); ?></span> 

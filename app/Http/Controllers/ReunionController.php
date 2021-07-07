@@ -27,9 +27,9 @@ class ReunionController extends Controller
 
         $reunion = new Reunion();
 
-        $reunion->reunion_ordre_jour             = $request->reunion_ordre_jour;
-        $reunion->reunion_pv                     = $request->reunion_pv;
-        $reunion->reunion_date_creation          = gmdate('Y-m-d H:i:s');
+        $reunion->reunion_ordre_jour                  = $request->reunion_ordre_jour;
+        $reunion->reunion_libelle                     = $request->reunion_libelle;
+        $reunion->reunion_date_creation               = gmdate('Y-m-d H:i:s');
         $reunion->save();
 
         return back()->with('message','OPÉRATION EFFECTUÉE AVEC SUCCÈS !');
@@ -44,8 +44,8 @@ class ReunionController extends Controller
 
         if(!empty($reunion)){
 
-            $participants	= Participant::join('tb_reunion_participant','tb_reunion_participant.participant_id','tb_participants.participant_id')
-            ->where(['tb_reunion_participant.reunion_id'=>$reunion_id])
+            $participants	= Participant::join('tb_reunion_participants','tb_reunion_participants.participant_id','tb_participants.participant_id')
+            ->where(['tb_reunion_participants.reunion_id'=>$reunion_id])
             ->get();                
                  
               

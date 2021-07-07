@@ -83,8 +83,8 @@ ul.no_liste_item li {
 							<i class="fa fa- icon-muted"></i> Odre du jour
 						</span>		
 						<span class="list-group-item"> 
-							<span class="badge bg-light">{{ $reunion->reunion_pv }}</span> 
-							<i class="fa fa- icon-muted"></i> Privé
+							<span class="badge bg-light">{{ $reunion->reunion_libelle }}</span> 
+							<i class="fa fa- icon-muted"></i> Libellé
 						</span>		
 						<span class="list-group-item"> 
 							<span class="badge bg-light">{{ Stdfn::dateTimeFromDB($reunion->reunion_date_creation) }}</span> 

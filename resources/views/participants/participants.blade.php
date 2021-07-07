@@ -52,33 +52,34 @@
 			
 				<div class="form-group{{ $errors->has('participant_nom') ? ' has-error' : '' }}">
 					
-					<div class="col-md-12 row" style="margin-bottom:20px;">
-						
-						<div class="col-md-5">
+					<div class="col-md-12 row" style="display:flex; flex-direction:column;">
+						<div class="card" style="display: flex; justify-content:center; margin-bottom:10px;">
+						<div class="col-md-4">
 							<span> Nom et Prénom <span class="text text-danger">*</span></span>
 							<input placeholder="" type="text" class="form-control" name="participant_nom"  value="{{ old('participant_nom') }}" required>
 						</div>
 						
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<span> Contact<span class="text text-danger"></span></span>
 							<input style="padding-top:0px;" placeholder="" type="text" class="form-control" name="participant_contact" value="{{ old('participant_contact') }}">
 						</div>
 
-						<div class="col-md-5">
+						<div class="col-md-">
 							<span> Email<span class="text text-danger"></span></span>
 							<input style="padding-top:0px;" placeholder="" type="text" class="form-control" name="participant_email" value="{{ old('participant_email') }}">
 						</div>
-
-						<div class="col-md-5">
+					</div>
+					<div class="card" style="margin-bottom: 10px;">
+						<div class="col-md-4" style="margin-left: 45px;">
 							<span> Fonction<span class="text text-danger"></span></span>
 							<input style="padding-top:0px;" placeholder="" type="text" class="form-control" name="participant_fonction" value="{{ old('participant_fonction') }}">
 						</div>
 
-						<div class="col-md-5">
+						<div class="col-md-4">
 							<span> Société<span class="text text-danger"></span></span>
 							<input style="padding-top:0px;" placeholder="" type="text" class="form-control" name="participant_society" value="{{ old('participant_society') }}">
 						</div>
-						
+					</div>	
 
 					</div>
 					

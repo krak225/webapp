@@ -27,12 +27,26 @@
 				<span class="fa-stack fa-2x pull-left m-r-sm"> 
 					<i class="fa fa-circle fa-stack-2x text-warning"></i> 
 					<i class="fa fa-list fa-stack-1x text-white"></i> 
+					
 				</span>
 				<a class="clear" href="{{ route('participants') }}"> 
 					<span class="h3 block m-t-xs"><strong>LISTE DE PRESENCE</strong></span> 
 					<small class="text-muted text-uc">Gestion de reunion</small> 
 				</a> 
 			</div> 
+
+			<div class="col-sm-8 col-md-8 padder-v b-r b-light"> 
+				<span class="fa-stack fa-2x pull-left m-r-sm"> 
+					<i class="fa fa-circle fa-stack-2x text-warning"></i> 
+					{{-- <i class="fa fa-list fa-stack-1x text-white"></i>  --}}
+					<i class="fa fa-calendar fa-stack-1x" style="color: white;" ></i>
+					
+				</span>
+				<a class="clear" href="{{ route('events') }}"> 
+					<span class="h3 block m-t-xs"><strong>AGENDA</strong></span> 
+					<small class="text-muted text-uc">Gestion des rendez-vous</small> 
+				</a> 
+			</div>
 
 			</div> 
 			

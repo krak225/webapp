@@ -27,6 +27,13 @@
 			margin-top: 10px;
 			margin-bottom: 0px;
 		}
+		.text-area{
+			width: 400px;
+		}
+		.text-area-1{
+			width: 300px;
+			height: 90px;
+		}
 	</style>
 	
 	<!--[if lt IE 9]> 
@@ -136,128 +143,8 @@
 									</li>
 									<?php if(auth()->guard()->check()): ?>
 
-									<li class="<?php if(Request::is('categories')): ?> active <?php endif; ?>"> 
-										 <a href="#" class=""> 
-											 <i class="fa fa-cogs icon"> 
-											 <b class="bg-info"></b> </i> 
-											 <span class="pull-right"> 
-												<i class="fa fa-angle-down text"></i> 
-												<i class="fa fa-angle-up text-active"></i> 
-											 </span> 
-											 <span>CATEGORIES</span> 
-										 </a> 
-										 <ul class="nav lt"> 
-											<li class=""> 
-												<a href="<?php echo e(route('categories')); ?>" class="active"> 
-												<i class="fa fa-angle-right"></i> 
-												<span>Tous les catégories</span> </a> 
-											</li> 
-										 </ul> 
-									</li>
-
-									<li class="<?php if(Request::is('produits')): ?> active <?php endif; ?>"> 
-										 <a href="#" class=""> 
-											 <i class="fa fa-list icon"> 
-											 <b class="bg-info"></b> </i> 
-											 <span class="pull-right"> 
-												<i class="fa fa-angle-down text"></i> 
-												<i class="fa fa-angle-up text-active"></i> 
-											 </span> 
-											 <span>PRODUITS</span> 
-										 </a> 
-										 <ul class="nav lt"> 
-											<li class=""> 
-												<a href="<?php echo e(route('produits')); ?>" class="active"> 
-												<i class="fa fa-angle-right"></i> 
-												<span>Tous les produits</span> </a> 
-											</li> 
-											<!--li class=""> 
-												<a href="<?php echo e(route('produits')); ?>" class="active"> 
-												<i class="fa fa-angle-right"></i> 
-												<span>Enregistrer un produits</span> </a> 
-											</li--> 
-										 </ul> 
-									</li>
-
-									<li class="<?php if(Request::is('commandes')): ?> active <?php endif; ?>"> 
-										 <a href="#" class=""> 
-											 <i class="fa fa-list icon"> 
-											 <b class="bg-info"></b> </i> 
-											 <span class="pull-right"> 
-												<i class="fa fa-angle-down text"></i> 
-												<i class="fa fa-angle-up text-active"></i> 
-											 </span> 
-											 <span>COMMANDES</span> 
-										 </a> 
-										 <ul class="nav lt"> 
-											<li class=""> 
-												<a href="<?php echo e(route('commandes')); ?>" class="active"> 
-												<i class="fa fa-angle-right"></i> 
-												<span>Toutes les commandes</span> </a> 
-											</li> 
-											<!--li class=""> 
-												<a href="<?php echo e(route('commandes')); ?>" class="active"> 
-												<i class="fa fa-angle-right"></i> 
-												<span>Commandes livrées</span> </a> 
-											</li> 
-											<li class=""> 
-												<a href="<?php echo e(route('commandes')); ?>" class="active"> 
-												<i class="fa fa-angle-right"></i> 
-												<span>Commandes non livrées</span> </a> 
-											</li-->
-										 </ul> 
-									</li>
-
-
-									<li class="<?php if(Request::is('courses')): ?> active <?php endif; ?>"> 
-										 <a href="#" class=""> 
-											 <i class="fa fa-list icon"> 
-											 <b class="bg-info"></b> </i> 
-											 <span class="pull-right"> 
-												<i class="fa fa-angle-down text"></i> 
-												<i class="fa fa-angle-up text-active"></i> 
-											 </span> 
-											 <span>COURSES</span> 
-										 </a> 
-										 <ul class="nav lt"> 
-											<li class=""> 
-												<a href="<?php echo e(route('courses')); ?>" class="active"> 
-												<i class="fa fa-angle-right"></i> 
-												<span>Toutes les courses</span> </a> 
-											</li> 
-											<!--li class=""> 
-												<a href="<?php echo e(route('courses')); ?>" class="active"> 
-												<i class="fa fa-angle-right"></i> 
-												<span>Courses livrées</span> </a> 
-											</li> 
-											<li class=""> 
-												<a href="<?php echo e(route('courses')); ?>" class="active"> 
-												<i class="fa fa-angle-right"></i> 
-												<span>Courses non livrées</span> </a> 
-											</li-->
-										 </ul> 
-									</li>
-
 									
 
-									<li class="<?php if(Request::is('reunion')): ?> active <?php endif; ?>"> 
-										<a href="#" class=""> 
-											<i class="fa fa-list icon"> 
-											<b class="bg-info"></b> </i> 
-											<span class="pull-right"> 
-											   <i class="fa fa-angle-down text"></i> 
-											   <i class="fa fa-angle-up text-active"></i> 
-											</span> 
-											<span>REUNION</span> 
-										</a> 
-										<ul class="nav lt"> 
-										   <li class=""> 
-											   <a href="<?php echo e(route('reunion')); ?>" class="active"> 
-											   <i class="fa fa-angle-right"></i> 
-											   <span>Tous les reunions</span> </a> 
-										   </li> 
-										</ul> 
-								   </li>
 										   
 									<li class="<?php if(Request::is('participants')): ?> active <?php endif; ?>"> 
 										<a href="#" class=""> 
@@ -270,6 +157,11 @@
 											<span>LISTE DE PRESENCE</span> 
 										</a> 
 										<ul class="nav lt"> 
+											<li class=""> 
+												<a href="<?php echo e(route('reunion')); ?>" class="active"> 
+												<i class="fa fa-angle-right"></i> 
+												<span>Toutes les reunions</span> </a> 
+											</li> 
 										   <li class=""> 
 											   <a href="<?php echo e(route('participants')); ?>" class="active"> 
 											   <i class="fa fa-angle-right"></i> 
@@ -277,6 +169,25 @@
 										   </li> 
 										</ul> 
 								   </li>
+
+								   <li class="<?php if(Request::is('events')): ?> active <?php endif; ?>"> 
+									<a href="#" class=""> 
+										<i class="fa fa-list icon"> 
+										<b class="bg-info"></b> </i> 
+										<span class="pull-right"> 
+										   <i class="fa fa-angle-down text"></i> 
+										   <i class="fa fa-angle-up text-active"></i> 
+										</span> 
+										<span>AGENDA</span> 
+									</a> 
+									<ul class="nav lt"> 
+									   <li class=""> 
+										   <a href="<?php echo e(route('events')); ?>" class="active"> 
+										   <i class="fa fa-angle-right"></i> 
+										   <span>Tous les évènements</span> </a> 
+									   </li> 
+									</ul> 
+							   </li>
 
 									<?php else: ?>
 									<li> 

@@ -168,6 +168,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        
 
         /*
          * Package Service Providers...
@@ -176,6 +177,8 @@ return [
 		Maatwebsite\Excel\ExcelServiceProvider::class,
 		//Codedge\FPDF\FpdfServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        MaddHatter\LaravelFullcalendar\ServiceProvider::class,
+        
         /*
          * Application Service Providers...
          */
@@ -237,6 +240,9 @@ return [
         'Stdfn' => App\Services\Stdfn\Stdfn::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
+
+
 
 
 		

@@ -18,12 +18,12 @@
 						<div class="col-md-5">
 							<span> Ordre du jour <span class="text text-danger">*</span></span>
 						
-							<textarea name="reunion_ordre_jour" id="reunion_ordre_jour" cols="30" rows="10" required><?php echo e($reunion->reunion_ordre_jour); ?></textarea>
+							<textarea name="reunion_ordre_jour" id="reunion_ordre_jour" class="text-area-1" required><?php echo e($reunion->reunion_ordre_jour); ?></textarea>
 						</div>
 						
 						<div class="col-md-5">
-							<span>Privé<span class="text text-danger"></span></span>
-							<textarea name="reunion_pv" id="reunion_pv" cols="30" rows="10"><?php echo e($reunion->reunion_pv); ?></textarea>
+							<span>Libelle<span class="text text-danger"></span></span>
+							<textarea name="reunion_libelle" id="reunion_libelle" class="text-area-1" ><?php echo e($reunion->reunion_libelle); ?></textarea>
 						</div>
 					</div>
 					    <div class="col-md-12 row" style="display:flex; justify-content:center; margin-top:10px;">	

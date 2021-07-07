@@ -13,6 +13,7 @@
 
 //le tout
 
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\ReunionController;
 
@@ -82,6 +83,11 @@ Route::get('modifier_participant/{participant_id}', 'ParticipantController@Modif
 Route::post('modifier_participant', 'ParticipantController@SaveModifierParticipant')->name('SaveModifierParticipant');
 Route::post('supprimer_participant', 'ParticipantController@SupprimerParticipant')->name('SupprimerParticipant');
 // FIN LISTE DE PRESENCE
+
+// EVENT(AGENDA)
+Route::get('agenda', 'EventController@events')->name('events');
+Route::post('agenda', 'EventController@SaveEvent')->name('SaveEvent');
+Route::get('ajouterevenement', 'EventController@Affiche');
 
 
 
