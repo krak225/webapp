@@ -53,8 +53,7 @@
 			
 				<div class="form-group<?php echo e($errors->has('participant_nom') ? ' has-error' : ''); ?>">
 					
-					<div class="col-md-12 row" style="display:flex; flex-direction:column;">
-						<div class="card" style="display: flex; justify-content:center; margin-bottom:10px;">
+					<div class="col-md-12 row" >
 						<div class="col-md-4">
 							<span> Nom et Prénom <span class="text text-danger">*</span></span>
 							<input placeholder="" type="text" class="form-control" name="participant_nom"  value="<?php echo e(old('participant_nom')); ?>" required>
@@ -65,13 +64,13 @@
 							<input style="padding-top:0px;" placeholder="" type="text" class="form-control" name="participant_contact" value="<?php echo e(old('participant_contact')); ?>">
 						</div>
 
-						<div class="col-md-">
+						<div class="col-md-4">
 							<span> Email<span class="text text-danger"></span></span>
 							<input style="padding-top:0px;" placeholder="" type="text" class="form-control" name="participant_email" value="<?php echo e(old('participant_email')); ?>">
 						</div>
 					</div>
-					<div class="card" style="margin-bottom: 10px;">
-						<div class="col-md-4" style="margin-left: 45px;">
+					<div class="col-md-12 row">
+						<div class="col-md-4">
 							<span> Fonction<span class="text text-danger"></span></span>
 							<input style="padding-top:0px;" placeholder="" type="text" class="form-control" name="participant_fonction" value="<?php echo e(old('participant_fonction')); ?>">
 						</div>
@@ -80,17 +79,21 @@
 							<span> Société<span class="text text-danger"></span></span>
 							<input style="padding-top:0px;" placeholder="" type="text" class="form-control" name="participant_society" value="<?php echo e(old('participant_society')); ?>">
 						</div>
-					</div>	
-
 					</div>
 					
-					<div class="col-md-12 row" style="display:flex; justify-content:center; margin-top:10px;">	
-						<div class="col-md-2" >
-							<span>&nbsp; <span class="text text-danger"></span></span>
-							<button type="submit" class="btn btn-success btn-sm rounded">ENREGISTRER</button> 
-						</div>
-						
+
+					<div class="col-md-12 row" style="margin-top:10px;">	
+							<div class="col-md-4 pull-left">
+								<span>&nbsp;<span class="text text-danger"></span></span>
+								<button type="reset" class="btn btn-danger">ANNULER</button>
+							</div>
+
+							<div class="pull-right">
+								<span>&nbsp;<span class="text text-danger"></span></span>
+								<button type="submit" class="btn btn-success">ENREGISTRER</button> 
+							</div>
 					</div>
+				</div>
 					
 				</div>
 
@@ -108,7 +111,7 @@
 
 
 <section class="panel panel-default"> 
-	<header class="panel-heading>Liste des participants</header> 
+	<header class="panel-heading">Liste des participants</header> 
 	
 	<div class="table-responsive"> 
 		<table id="table_courriers" class="table table-striped m-b-none datatable "> 

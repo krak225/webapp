@@ -19,7 +19,19 @@
 	
     <!--link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/summernote/summernote.js')); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/summernote/summernote.css')); ?>"-->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
 	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			text-decoration: none;
+		}
 		.div-button{
 			display: flex;
 			align-items: center;
@@ -34,6 +46,17 @@
 			width: 300px;
 			height: 90px;
 		}
+		.event-button{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.event-button .event{
+			display: flex;
+			margin: 0px 5px;
+			align-items: center;
+		}
+
 	</style>
 	
 	<!--[if lt IE 9]> 
@@ -150,7 +173,7 @@
 										<a href="#" class=""> 
 											<i class="fa fa-list icon"> 
 											<b class="bg-info"></b> </i> 
-											<span class="pull-right"> 
+												<span class="pull-right"> 
 											   <i class="fa fa-angle-down text"></i> 
 											   <i class="fa fa-angle-up text-active"></i> 
 											</span> 
@@ -160,13 +183,18 @@
 											<li class=""> 
 												<a href="<?php echo e(route('reunion')); ?>" class="active"> 
 												<i class="fa fa-angle-right"></i> 
-												<span>Toutes les reunions</span> </a> 
+												<span>Nouvelle liste</span> </a> 
 											</li> 
 										   <li class=""> 
 											   <a href="<?php echo e(route('participants')); ?>" class="active"> 
 											   <i class="fa fa-angle-right"></i> 
 											   <span>Tous les participants</span> </a> 
 										   </li> 
+										   <li class=""> 
+											<a href="<?php echo e(route('Societes')); ?>" class="active"> 
+											<i class="fa fa-angle-right"></i> 
+											<span>Liste des sociétés</span> </a> 
+										</li> 
 										</ul> 
 								   </li>
 
@@ -284,6 +312,9 @@
 	
 	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" ></script>
+
 	
 	<input type="hidden" id="eco_base_url" value="<?php echo e('http://'.$_SERVER['HTTP_HOST']); ?>/">
 

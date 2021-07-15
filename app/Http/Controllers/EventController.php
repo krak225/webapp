@@ -26,15 +26,15 @@ class EventController extends Controller
         $event = [];
         
         foreach ($event as $row ) {
-            $enddate = $row->event_date_end."24:00:00"; 
+            // $enddate = $row->end_date."24:00:00"; 
             $event[] = Calendar::event(
-                        $row->event_title,
-                        true,
-                        new \DateTime($row->event_date_start),
-                        new \DateTime($row->event_date_end),
-                        $row->event_id,
+                        $row->title,
+                        false,
+                        new \DateTime($row->start_date),
+                        new \DateTime($row->end_date),
+                        $row->id,
                         [
-                            'color' => $row->event_color,
+                            'color' => $row->color,
                         ]
                 );
                 
@@ -48,9 +48,9 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function AddEvent()
     {
-        //
+        return view('event.addevent');
     }
 
     /**
@@ -60,31 +60,24 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function Affiche()
-    {
-        return view('event.addevent');
-    }
-
-
 
     public function SaveEvent(Request $request)
     {
           $this->validate($request,[
             
-            'event_title' => 'required',
-            'event_date_start' => 'required',
-            'event_date_end' => 'required',
-            'event_color' => 'required',
+            'title' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'color' => 'required',
         ]);
 
         $event = new Event();
 
-        $event->event_title        =  $request->input('event_title');
-        $event->event_date_start   =  $request->input('event_date_start');
-        $event->event_date_end     =  $request->input('event_date_end');
-        $event->event_color        =  $request->input('event_color');
-        $event->event_date_creation   = gmdate('Y-m-d H:i:s');
-
+        $event->title                      =  $request->input('title');
+        $event->start_date                 =  $request->input('start_date');
+        $event->end_date                   =  $request->input('end_date');
+        $event->color                      =  $request->input('color');
+        $event->event_date_creation        = gmdate('Y-m-d H:i:s');
         $event->save();
 
         return redirect()->route('events')->with('message', 'Evènement ajouter');
@@ -97,9 +90,10 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
-    {
-        //
+    public function ShowEvent()
+    {   
+          $event = Event::all();
+            return view('event.display', compact('event'));
     }
 
     /**
@@ -108,9 +102,10 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+    public function EditEvent(Event $event)
     {
-        //
+        $event = Event::find($event->id);
+        return view('event.editevent', compact('event'));
     }
 
     /**
@@ -120,9 +115,27 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function UpdateEvent(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            
+            'title' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'color' => 'required',
+        ]);
+
+        $event = Event::find($id);
+
+        $event->title                          =  $request->input('title');
+        $event->start_date                     =  $request->input('start_date');
+        $event->end_date                       =  $request->input('end_date');
+        $event->color                          =  $request->input('color');
+        $event->event_date_modification        = gmdate('Y-m-d H:i:s');
+        $event->save();
+        // echo '<script> alert("Donée Enregistrer") </script>';
+        return redirect()->route('events ')->with('message', 'Evènement mise à jour');
+
     }
 
     /**

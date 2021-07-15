@@ -106,6 +106,40 @@ ul.no_liste_item li {
 
 			
 			<section class="panel panel-default"> 
+				<header class="panel-heading"> Liste des sociétés
+				</header> 
+				
+				<div class="table-responsive"> 
+					<table id="reunions" class="table table-striped m-b-none datatable"> 
+						<thead> 
+							<tr>
+								<th></th>
+								<th></th>
+								<th width="">Nom de la société</th>
+								<th width="">Statut</th>
+								<th width="">Date enregistrement</th>
+								<th width="">Action</th>
+							</tr> 
+						</thead> 
+						<tbody>
+							<?php $__currentLoopData = $societes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $societe): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+							<tr>
+								<td><a href="<?php echo e(route('DetailsSociete',$societe->societe_id)); ?>"><i class="fa fa-cogs text-info" title="Afficher les détails"></i></a></td> 
+								<td><span class="btnModifierSociete" data-societe_id="<?php echo e($societe->societe_id); ?>" style="cursor: pointer;"><i class="fa fa-edit text-warning" title="Modifier"></i></span></td> 
+								<td><?php echo e($societe->societe_nom); ?></td>
+								<td><?php echo e($societe->societe_statut); ?></td>
+								<td><?php echo e(Stdfn::dateFromDB($societe->societe_date_creation)); ?></td>
+								<td><span class="btnSupprimerSociete" data-societe_id="<?php echo e($societe->societe_id); ?>" style="cursor: pointer;"><i class="fa fa-times text-danger" title="Supprimer cette société"></i></a></td> 
+							</tr>	
+						<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+						</tbody> 
+					</table> 
+				</div> 
+			</section>
+			
+
+			
+			<section class="panel panel-default"> 
 				<header class="panel-heading"> Liste des participants
 				</header> 
 				

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Participant;
 use App\Reunion;
+use App\ReunionSociete;
+use App\Societe;
 
 class ReunionController extends Controller
 {
@@ -16,21 +18,38 @@ class ReunionController extends Controller
 
     public function reunion()
     {
-
+        $reunion = Reunion::get();
+        $societes	= Societe::get();  
+        // $societe = Societe::where(['societe_statut'=> 'VALIDE']);
+            return view('reunion.reunion', compact('reunion', 'societes'));
+        
         $reunion = Reunion::where(['reunion_statut'=>'VALIDE'])->get();
 
-        return view('reunion.reunion', compact('reunion'));
+        
     }
 
     public function SaveReunion(Request $request )
     { 
-
+        $societes                  = $request->societes;
         $reunion = new Reunion();
-
+       
         $reunion->reunion_ordre_jour                  = $request->reunion_ordre_jour;
         $reunion->reunion_libelle                     = $request->reunion_libelle;
         $reunion->reunion_date_creation               = gmdate('Y-m-d H:i:s');
         $reunion->save();
+
+        $reunion_id = $reunion->reunion_id;
+
+        foreach($societes as $societe_id)
+        {
+            $reunion_societe = new ReunionSociete();
+
+            $reunion_societe->reunion_id = $reunion_id;
+            $reunion_societe->societe_id = $societe_id;
+            $reunion_societe->save();
+
+
+        }
 
         return back()->with('message','OPÉRATION EFFECTUÉE AVEC SUCCÈS !');
     }
@@ -46,10 +65,12 @@ class ReunionController extends Controller
 
             $participants	= Participant::join('tb_reunion_participants','tb_reunion_participants.participant_id','tb_participants.participant_id')
             ->where(['tb_reunion_participants.reunion_id'=>$reunion_id])
+            ->get(); 
+            $societes	= Societe::join('tb_reunion_societe','tb_reunion_societe.societe_id','tb_societe.societe_id')
+            ->where(['tb_reunion_societe.reunion_id'=>$reunion_id])
             ->get();                
-                 
-              
-            return view('reunion.details_reunion', compact('reunion','participants'));
+                               
+            return view('reunion.details_reunion', compact('reunion','participants', 'societes'));
         }
         else{
             return Redirect('participants.reunion')->with('warning',"LA REUNION QUE VOUS CHERCHEZ N'A PAS ÉTÉ TROUVÉ");
@@ -107,13 +128,5 @@ class ReunionController extends Controller
 
     }
 
-    public function SaveReunionParticipant()
-    {
 
-    }
-
-    public function ListReunionParticipant()
-    {
-       
-}
 }

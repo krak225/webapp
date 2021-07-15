@@ -16,6 +16,7 @@
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\ReunionController;
+use App\Http\Controllers\SocieteController;
 
 Auth::routes();
 
@@ -84,10 +85,23 @@ Route::post('modifier_participant', 'ParticipantController@SaveModifierParticipa
 Route::post('supprimer_participant', 'ParticipantController@SupprimerParticipant')->name('SupprimerParticipant');
 // FIN LISTE DE PRESENCE
 
+
+// LISTES DES SOCIETES
+Route::get('societes', 'SocieteController@societe')->name('Societes');
+Route::post('societes', 'SocieteController@SaveSociete')->name('SaveSociete');
+Route::get('societe/{societe_id}', 'SocieteController@DetailsSociete')->name('DetailsSociete');
+Route::get('modifier_societe/{societe_id}', 'SocieteController@ModifierSociete')->name('ModifierSociete');
+Route::post('modifier_societe', 'SocieteController@SaveModifierSociete')->name('SaveModifierSociete');
+Route::post('supprimer_societe', 'SocieteController@SupprimerSociete')->name('SupprimerSociete');
+// FIN DE LISTE
+
 // EVENT(AGENDA)
 Route::get('agenda', 'EventController@events')->name('events');
 Route::post('agenda', 'EventController@SaveEvent')->name('SaveEvent');
-Route::get('ajouterevenement', 'EventController@Affiche');
+Route::get('/ajouterevenement', 'EventController@AddEvent')->name('AddEvent');
+Route::get('/afficherevenement', 'EventController@ShowEvent')->name('ShowEvent');
+Route::get('/editerevenement', 'EventController@EditEvent')->name('EditEvent');
+// Route::post('editerevenement/{id}', 'EventController@UpdateEvent')->ame('UpdateEvent');
 
 
 

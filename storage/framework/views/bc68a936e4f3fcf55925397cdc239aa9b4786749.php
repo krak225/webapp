@@ -1,12 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
 
 
     <style>
@@ -24,17 +21,18 @@
                         </div>
                         <div class="panel-body">
                             <h1 class="d-flex justify-content-center text-uppercase fs-4 pt-2 pb-2">Ajouter des Données</h1>
+                            
                             <form method="POST" action="<?php echo e(route('SaveEvent')); ?>">
                                 <?php echo e(csrf_field()); ?>
 
                                 <label for="event_title">Evènement</label>
-                                <input type="text" class="form-control mb-5"    name="event_title"      placeholder="Entrez le nom de l'évènement " required>
+                                <input type="text" class="form-control mb-5"    name="title"      placeholder="Entrez le nom de l'évènement " required>
                                 <label for="event_color">Entrez votre couleur</label>
-                                <input type="color" class="form-control mb-5"   name="event_color"      placeholder="Choisissez la couleur de l'évènement" required>
-                                <label for="event_date_start">Date de début </label>
-                                <input type="date" class="form-control mb-5"    name="event_date_start" placeholder="Choisissez la date de début de l'évènement" required>
-                                <label for="">Date de fin</label>
-                                <input type="date" class="form-control mb-5"    name="event_date_end"    placeholder="Choisissez la date de fin de l'évènement" required>
+                                <input type="color" class="form-control mb-5"   name="color"      placeholder="Choisissez la couleur de l'évènement" required>
+                                <label for="start_date">Date de début </label>
+                                <input type="date" class="form-control mb-5"    name="start_date" placeholder="Choisissez la date de début de l'évènement" required>
+                                <label for="end_date">Date de fin</label>
+                                <input type="date" class="form-control mb-5"    name="end_date"    placeholder="Choisissez la date de fin de l'évènement" required> 
 
                                 <input type="submit" name="submit" class="btn btn-primary" value="Ajouter un évènement">
                             </form>

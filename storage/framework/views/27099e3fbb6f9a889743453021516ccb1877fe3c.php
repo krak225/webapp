@@ -3,14 +3,28 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
 
 
     <style>
-        /* ... */
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+        .jumbotron .event-button .event{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 250px;
+        }
+        .jumbotron .event-button{
+            left: 50%;
+        }
     </style>
 </head>
 <body>
@@ -40,11 +54,13 @@
             </ul>
         </div>
     <?php endif; ?>
+    <div class="container">
         <div class="jumbotron">
-            <div class="row pb-3 d-flex justifycontent-center">
-                <a href="/ajouterevenement" class="btn btn-success mb-2">Ajouter un évènement</a>
-                <a href="/editerevenement" class="btn btn-primary mb-2">Editer un évènement</a>
-                <a href="/deleteevenement" class="btn btn-danger mb-2">Supprimer un évènement</a>
+            <div class="row event-button pb-3 ">
+                <div class="event"><a href="/ajouterevenement" class="btn btn-success mb-2">Ajouter un évènement</a></div> 
+                <div class="event"><a href="/afficherevenement" class="btn btn-info mb-2">Afficher les évènements</a></div> 
+                <div class="event"><a href="/editerevenement" class="btn btn-primary mb-2">Editer un evenement</a></div>
+                <div class="event"><a href="/deleteevenement" class="btn btn-danger mb-2">Supprimer un évènement</a></div> 
             </div>
             <div class="row">
                 <div class="col-md-12 col-md-offset-2">
@@ -53,16 +69,16 @@
                            <a href="#" class="text-uppercase" style="color: white;">Agenda</a>
                         </div>
                         <div class="panel-body"> 
-                                <?php echo $calendar->calendar(); ?>
+                            <?php echo $calendar->calendar(); ?>
 
-                                <?php echo $calendar->script(); ?> 
+                            <?php echo $calendar->script(); ?> 
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" ></script>

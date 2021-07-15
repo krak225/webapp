@@ -52,27 +52,47 @@
 			
 				<div class="form-group{{ $errors->has('reunion_ordre_jour') ? ' has-error' : '' }}">
 					
-					<div class="col-md-12 row" style="display: flex; justify-content:space-between; margin-bottom:25px;">
+					<div class="col-md-12 row">
 						
-						<div class="col-md-5 form-group">
-							<span> Libellé<span class="text text-danger"></span></span>
+						<div class="col-md-6 ">
+							<span> Libellé<span class="text text-danger"></span>
 							<input style="padding-top:0px;" placeholder="" type="text" class="form-control" name="reunion_libelle" value="{{ old('reunion_libelle') }}" required>
 						</div>
-
-						<div class="col-md-5 ">
+						<div class="col-md-6">
+							<span> Date<span class="text text-danger"></span>
+							<input type="date" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-12 row" style="margin-top: 10px;">	
+						<div class="col-md-6">		
 							<span> Ordre du jour<span class="text text-danger"></span></span><br>
-							<textarea name="reunion_ordre_jour" class="text-area" id="reunion_ordre_jour"  required >{{ old('reunion_ordre_jour') }}</textarea>
+							<textarea name="reunion_ordre_jour" class="text-area" id="reunion_ordre_jour"  required >{{ old('reunion_ordre_jour') }}</textarea>		
 						</div>
-						
-					</div>
+							<div class="col-md-4">
+								<span> Societé <span class="text text-danger">*</span></span>
+								<select multiple  class="form-control" name="societes[]" required>
+									<option value="">Choisir</option>
+									@foreach($societes as $societe)
+									<option value="{{ $societe->societe_id }}">{{ $societe->societe_nom }}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
+
+
 					
-					<div class="col-md-12 row" style="display:flex; justify-content:center; margin-top:10px;">							
-						<div class="col-md-2">
-							<span>&nbsp; <span class="text text-danger"></span></span>
-							<button type="submit" class="btn btn-success btn-sm rounded">ENREGISTRER</button> 
+					
+					<div class="col-md-12 row" style="margin-top:10px;">	
+						<div class="col-md-4 pull-left">
+							<span>&nbsp;<span class="text text-danger"></span></span>
+							<button type="reset" class="btn btn-danger">ANNULER</button>
 						</div>
-						
-					</div>
+
+						<div class="pull-right">
+							<span>&nbsp;<span class="text text-danger"></span></span>
+							<button type="submit" class="btn btn-success">ENREGISTRER</button> 
+						</div>
+				</div>
 					
 				</div>
 

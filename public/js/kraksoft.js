@@ -551,6 +551,127 @@
 			
 		});
 
+		// SOCIETE
+		// Ajouter le 14/07/2021 a 16h32
+		$('.btnModifierSociete').click(function(){
+			
+			var societe_id  = $(this).attr('data-societe_id');
+			
+			$('#dialogKrakPopup').krakPopup({
+				title:"Modification d'une societe",
+				url:base_url+'modifier_societe/'+societe_id,
+				width:800,
+				contentMinHeight:200,
+				draggable:true,
+				closeButton:false,
+				submitButton:false,
+				customButton:{
+					show:false,
+					text:'Modifier',
+					clickFn:function(){
+						
+					}
+				},
+				onFinish:function(){
+					
+					//validation du formulaire
+					$('#btnSaveModifierSociete').click(function(){
+						
+						var societe_nom      =     $('#societe_nom').val();
+						
+						
+						if(societe_nom != ""){
+							
+							$.ajax({
+								headers:{'X-CSRF-TOKEN': csrf_token},
+								type:'post',
+								url: base_url + 'modifier_societe',
+								data: $('#formModifierSociete').serialize(),
+								success: function(e){
+									
+									noty({
+										dismissQueue: false,
+										force: true,
+										layout:'center',
+										modal: true,
+										theme: 'defaultTheme',
+										text:"Modification effectuée avec succès !",
+										type: 'success',
+										buttons: [
+											{addClass: 'btn btn-info ', text: 'OK', onClick: function($noty) {
+												$noty.close();
+
+												location.href = '';
+
+											}}]
+									});
+									
+									
+								},
+								error: function(){
+									notification("Erreur lors du traitement","error");
+								}
+							});
+							
+						}else{
+							notification("Veuillez renserigner tous les champs","warning");
+						}
+						
+					});
+					
+				},
+			});
+			
+			
+		});
+		
+		
+
+		//
+		$('.btnSupprimerSociete').click(function(){
+			
+			var societe_id = $(this).attr('data-societe_id');
+			
+			noty({
+				dismissQueue: false,
+				force: true,
+				layout:'center',
+				modal: true,
+				theme: 'defaultTheme',
+				text:"Voulez-vous vraiment supprimer cette société ?",
+				type: 'warning',
+				buttons: [
+					{addClass: 'btn btn-danger ', text: 'Supprimer', onClick: function($noty) {
+				   		$noty.close();
+
+						$.ajax({
+							headers:{'X-CSRF-TOKEN': csrf_token},
+							type:'post',
+							url: base_url + 'supprimer_societe',
+							data: {societe_id:societe_id},
+							success: function(data){
+								
+								if(data == 1){
+									location.href = "";
+								}else{
+									notification('Erreur lors de la suppression',"warning");
+								}
+								
+							},
+							error: function(){
+								notification("Erreur lors du traitement","error");
+							}
+						});
+
+				   	}},
+				   	{addClass: 'btn btn-info ', text: 'Non', onClick: function($noty) {
+				   		$noty.close();
+				   	}}]
+			});
+
+			
+		});
+
 		
 
 	

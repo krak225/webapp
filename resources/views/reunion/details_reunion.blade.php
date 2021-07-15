@@ -105,6 +105,40 @@ ul.no_liste_item li {
 		<br style="clear:both;"/>	
 </div>
 
+			{{-- liste des sociétés --}}
+			<section class="panel panel-default"> 
+				<header class="panel-heading"> Liste des sociétés
+				</header> 
+				
+				<div class="table-responsive"> 
+					<table id="reunions" class="table table-striped m-b-none datatable"> 
+						<thead> 
+							<tr>
+								<th></th>
+								<th></th>
+								<th width="">Nom de la société</th>
+								<th width="">Statut</th>
+								<th width="">Date enregistrement</th>
+								<th width="">Action</th>
+							</tr> 
+						</thead> 
+						<tbody>
+							@foreach($societes as $societe)
+							<tr>
+								<td><a href="{{route('DetailsSociete',$societe->societe_id)}}"><i class="fa fa-cogs text-info" title="Afficher les détails"></i></a></td> 
+								<td><span class="btnModifierSociete" data-societe_id="{{$societe->societe_id}}" style="cursor: pointer;"><i class="fa fa-edit text-warning" title="Modifier"></i></span></td> 
+								<td>{{ $societe->societe_nom }}</td>
+								<td>{{ $societe->societe_statut}}</td>
+								<td>{{ Stdfn::dateFromDB($societe->societe_date_creation) }}</td>
+								<td><span class="btnSupprimerSociete" data-societe_id="{{$societe->societe_id}}" style="cursor: pointer;"><i class="fa fa-times text-danger" title="Supprimer cette société"></i></a></td> 
+							</tr>	
+						@endforeach
+						</tbody> 
+					</table> 
+				</div> 
+			</section>
+			{{-- fin de liste des sociétés --}}
+
 			{{-- liste participants --}}
 			<section class="panel panel-default"> 
 				<header class="panel-heading"> Liste des participants

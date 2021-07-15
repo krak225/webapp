@@ -14,4 +14,8 @@ class Reunion extends Model
 	{
 		return $this->belongsToMany('App\Participant');
 	}
+	public function society()
+	{
+		return $this->belongsToMany('App\Society');
+	}
 }
