@@ -21,15 +21,17 @@
 				</a> 
 			</div> 
 
-			<div class="col-sm-8 col-md-8 padder-v b-r b-light"> 
+			
+
+			<div class="col-sm-8 col-md-4 padder-v b-r b-light"> 
 				<span class="fa-stack fa-2x pull-left m-r-sm"> 
 					<i class="fa fa-circle fa-stack-2x text-warning"></i> 
-					<i class="fa fa-calendar fa-stack-1x text-white"></i> 
+					<i class="fa fa-info fa-stack-1x text-white"></i> 
 					
 				</span>
-				<a class="clear" href="<?php echo e(route('events')); ?>"> 
-					<span class="h3 block m-t-xs"><strong>AGENDA</strong></span> 
-					<small class="text-muted text-uc">Gestion des rendez-vous</small> 
+				<a class="clear" href="<?php echo e(route('evenementielHome')); ?>"> 
+					<span class="h3 block m-t-xs"><strong>INFO EVENEMENTIEL</strong></span> 
+					<small class="text-muted text-uc">Gestion des évènements</small> 
 				</a> 
 			</div> 
 

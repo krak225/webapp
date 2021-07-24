@@ -166,7 +166,24 @@
 									</li>
 									<?php if(auth()->guard()->check()): ?>
 
-									
+									<li class="<?php if(Request::is('produits')): ?> active <?php endif; ?>"> 
+										<a href="#" class=""> 
+											<i class="fa fa-list icon"> 
+											<b class="bg-info"></b> </i> 
+												<span class="pull-right"> 
+											   <i class="fa fa-angle-down text"></i> 
+											   <i class="fa fa-angle-up text-active"></i> 
+											</span> 
+											<span>PRODUITS</span> 
+										</a> 
+										<ul class="nav lt"> 
+											<li class=""> 
+												<a href="<?php echo e(route('produits')); ?>" class="active"> 
+												<i class="fa fa-angle-right"></i> 
+												<span>liste des produits</span> </a> 
+											</li> 
+										</ul> 
+								   </li>
 
 										   
 									<li class="<?php if(Request::is('participants')): ?> active <?php endif; ?>"> 
@@ -203,19 +220,38 @@
 										<i class="fa fa-list icon"> 
 										<b class="bg-info"></b> </i> 
 										<span class="pull-right"> 
-										   <i class="fa fa-angle-down text"></i> 
-										   <i class="fa fa-angle-up text-active"></i> 
+										<i class="fa fa-angle-down text"></i> 
+										<i class="fa fa-angle-up text-active"></i> 
 										</span> 
 										<span>AGENDA</span> 
 									</a> 
 									<ul class="nav lt"> 
-									   <li class=""> 
-										   <a href="<?php echo e(route('events')); ?>" class="active"> 
-										   <i class="fa fa-angle-right"></i> 
-										   <span>Tous les évènements</span> </a> 
-									   </li> 
+									<li class=""> 
+										<a href="<?php echo e(route('events')); ?>" class="active"> 
+										<i class="fa fa-angle-right"></i> 
+										<span>Mon calendrier</span> </a> 
+									</li> 
 									</ul> 
-							   </li>
+							  </li>
+
+							  <li class="<?php if(Request::is('evenements')): ?> active <?php endif; ?>"> 
+								<a href="#" class=""> 
+									<i class="fa fa-list icon"> 
+									<b class="bg-info"></b> </i> 
+									<span class="pull-right"> 
+									<i class="fa fa-angle-down text"></i> 
+									<i class="fa fa-angle-up text-active"></i> 
+									</span> 
+									<span>EVENEMENTS</span> 
+								</a> 
+								<ul class="nav lt"> 
+								<li class=""> 
+									<a href="<?php echo e(route('evenementielHome')); ?>" class="active"> 
+									<i class="fa fa-angle-right"></i> 
+									<span>Tous les évènements</span> </a> 
+								</li> 
+								</ul> 
+						  </li>
 
 									<?php else: ?>
 									<li> 

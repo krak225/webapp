@@ -18,13 +18,13 @@ class ReunionController extends Controller
 
     public function reunion()
     {
-        $reunion = Reunion::get();
-        $societes	= Societe::get();  
-        // $societe = Societe::where(['societe_statut'=> 'VALIDE']);
-            return view('reunion.reunion', compact('reunion', 'societes'));
-        
         $reunion = Reunion::where(['reunion_statut'=>'VALIDE'])->get();
 
+        $societes	= Societe::get();  
+        
+            return view('reunion.reunion', compact('reunion', 'societes'));
+        
+       
         
     }
 

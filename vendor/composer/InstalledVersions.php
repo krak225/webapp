@@ -32,7 +32,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '4ba0c3ffd935a5d35384fcd860ddbf60cd2abd83',
+    'reference' => '160bb4e4a81d3f801a0eca90302fa724a4680daa',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -416,6 +416,24 @@ private static $installed = array (
       ),
       'reference' => '429be50660ed8a196e0798e5939760f168ec8ce9',
     ),
+    'laminas/laminas-escaper' => 
+    array (
+      'pretty_version' => '2.8.0',
+      'version' => '2.8.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2d6dce99668b413610e9544183fa10392437f542',
+    ),
+    'laminas/laminas-zendframework-bridge' => 
+    array (
+      'pretty_version' => '1.3.0',
+      'version' => '1.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '13af2502d9bb6f7d33be2de4b51fb68c6cdb476e',
+    ),
     'laravel/framework' => 
     array (
       'pretty_version' => 'v5.5.50',
@@ -432,7 +450,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '4ba0c3ffd935a5d35384fcd860ddbf60cd2abd83',
+      'reference' => '160bb4e4a81d3f801a0eca90302fa724a4680daa',
     ),
     'laravel/tinker' => 
     array (
@@ -653,6 +671,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'c55269cb06911575a126dc225a05c0e4626e5fb4',
+    ),
+    'phpoffice/phpword' => 
+    array (
+      'pretty_version' => '0.18.2',
+      'version' => '0.18.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'aca10785cf68dc95d7f6fac4fe854979fef3f8db',
     ),
     'phpspec/prophecy' => 
     array (
@@ -1227,6 +1254,13 @@ private static $installed = array (
       array (
       ),
       'reference' => '6964c76c7804814a842473e0c8fd15bab0f18e25',
+    ),
+    'zendframework/zend-escaper' => 
+    array (
+      'replaced' => 
+      array (
+        0 => '^2.6.1',
+      ),
     ),
   ),
 );

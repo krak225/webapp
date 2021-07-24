@@ -178,6 +178,7 @@ return [
 		//Codedge\FPDF\FpdfServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
+        // PhpOffice\PhpWord\TemplateProcessor::class,
         
         /*
          * Application Service Providers...
@@ -241,6 +242,7 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
+        'Office' => PhpOffice\PhpWord\TemplateProcessor::class,
 
 
 

@@ -117,62 +117,6 @@ ul.no_liste_item li {
 		<br style="clear:both;"/>	
 </div>
 
-					<div class="line line-lg pull-in"></div>
-					
-					<div class="panel panel-default" style="padding-bottom:10px;"> 
-												
-						<script src="<?php echo e(asset('js/jquery-1.9.1.min.js')); ?>"></script>
-						<script src="<?php echo e(asset('js/dropzone.js')); ?>"></script>
-
-						<script type="text/javascript">
-
-						var my_login =  '<?php echo e(Auth::user()->email); ?>';
-
-
-							var csrf_token = $('meta[name="csrf-token"]').attr('content');
-							var base_url = $("#eco_base_url").val();
-							var base_url = '<?php echo e('http://'.$_SERVER['HTTP_HOST']); ?>/';
-							
-							
-
-						</script>
-
-						<style type="text/css">
-						
-						.title{
-							padding:0px 15px;
-						}
-
-						.dz-preview, .dz-file-preview {
-							display: none;
-						}
-						#table_justifs{
-							border: 1px solid #eee;
-							margin-top:0px;
-						}
-						#table_justifs th{
-							background:#eee;	
-						}
-					
-						</style>
-
-						<br style="clear:both;"/>
-					
-					</div>
-					
-					
-					
-				</div> 
-				
-			 
-		
-		</div>
-		
-	</div>
-
-		</div>
-
-	</div>
 	
 		
 	<?php else: ?>

@@ -164,7 +164,24 @@
 									</li>
 									@auth
 
-									
+									<li class="@if(Request::is('produits')) active @endif"> 
+										<a href="#" class=""> 
+											<i class="fa fa-list icon"> 
+											<b class="bg-info"></b> </i> 
+												<span class="pull-right"> 
+											   <i class="fa fa-angle-down text"></i> 
+											   <i class="fa fa-angle-up text-active"></i> 
+											</span> 
+											<span>PRODUITS</span> 
+										</a> 
+										<ul class="nav lt"> 
+											<li class=""> 
+												<a href="{{route('produits')}}" class="active"> 
+												<i class="fa fa-angle-right"></i> 
+												<span>liste des produits</span> </a> 
+											</li> 
+										</ul> 
+								   </li>
 
 										   {{-- liste de presence --}}
 									<li class="@if(Request::is('participants')) active @endif"> 
@@ -201,19 +218,38 @@
 										<i class="fa fa-list icon"> 
 										<b class="bg-info"></b> </i> 
 										<span class="pull-right"> 
-										   <i class="fa fa-angle-down text"></i> 
-										   <i class="fa fa-angle-up text-active"></i> 
+										<i class="fa fa-angle-down text"></i> 
+										<i class="fa fa-angle-up text-active"></i> 
 										</span> 
 										<span>AGENDA</span> 
 									</a> 
 									<ul class="nav lt"> 
-									   <li class=""> 
-										   <a href="{{route('events')}}" class="active"> 
-										   <i class="fa fa-angle-right"></i> 
-										   <span>Tous les évènements</span> </a> 
-									   </li> 
+									<li class=""> 
+										<a href="{{route('events')}}" class="active"> 
+										<i class="fa fa-angle-right"></i> 
+										<span>Mon calendrier</span> </a> 
+									</li> 
 									</ul> 
-							   </li>
+							  </li>
+
+							  <li class="@if(Request::is('evenements')) active @endif"> 
+								<a href="#" class=""> 
+									<i class="fa fa-list icon"> 
+									<b class="bg-info"></b> </i> 
+									<span class="pull-right"> 
+									<i class="fa fa-angle-down text"></i> 
+									<i class="fa fa-angle-up text-active"></i> 
+									</span> 
+									<span>EVENEMENTS</span> 
+								</a> 
+								<ul class="nav lt"> 
+								<li class=""> 
+									<a href="{{route('evenementielHome')}}" class="active"> 
+									<i class="fa fa-angle-right"></i> 
+									<span>Tous les évènements</span> </a> 
+								</li> 
+								</ul> 
+						  </li>
 
 									@else
 									<li> 

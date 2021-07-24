@@ -13,6 +13,7 @@
 
 //le tout
 
+use App\Http\Controllers\AnnonceController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\ReunionController;
@@ -83,6 +84,7 @@ Route::get('participant/{participant_id}', 'ParticipantController@DetailsPartici
 Route::get('modifier_participant/{participant_id}', 'ParticipantController@ModifierParticipant')->name('ModifierParticipant');
 Route::post('modifier_participant', 'ParticipantController@SaveModifierParticipant')->name('SaveModifierParticipant');
 Route::post('supprimer_participant', 'ParticipantController@SupprimerParticipant')->name('SupprimerParticipant');
+Route::get('expoter_fichier', 'ParticipantController@ExporterFichier')->name('ExporterFichier');
 // FIN LISTE DE PRESENCE
 
 
@@ -105,9 +107,17 @@ Route::get('/editerevenement', 'EventController@EditEvent')->name('EditEvent');
 
 
 
+// /application de suivi des Evenements (discussions groupe whatsapp info evenementiel)
 
-
-
+Route::get('evenementiel','EvenementController@evenementielHome')->name('evenementielHome');
+Route::get('evenementiel/evenements','EvenementController@evenements')->name('evenements');
+Route::get('evenementiel/evenements_a_facturer','EvenementController@evenements_a_facturer')->name('evenements_a_facturer');
+Route::get('evenementiel/evenements_factures','EvenementController@evenements_factures')->name('evenements_factures');
+Route::post('evenementiel/evenements','EvenementController@ImporterEvenements')->name('ImporterEvenements');
+Route::get('evenementiel/evenement/{evenement_id}','EvenementController@DetailsEvenement')->name('DetailsEvenement');
+Route::get('evenementiel/popup_redevance_evenement/{evenement_id}','EvenementController@popup_redevance_evenement')->name('popup_redevance_evenement');
+Route::post('evenementiel/set_redevance_evenement','EvenementController@set_redevance_evenement')->name('set_redevance_evenement');
+Route::post('supprimer_evenement', 'EvenementController@SupprimerEvenement')->name('SupprimerEvenement');
 
 
 //sécurité

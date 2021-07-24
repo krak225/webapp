@@ -671,9 +671,243 @@
 
 			
 		});
+	});
 
+	//Evenement
+	/* APP EVENEMENTIEL WHATSAPP */		
+		
+		//Terminer une visite dans un service
+		$('#btnChangerStatutFacturationEvenement').click(function(){
+			
+			var ceBouton = $(this);
+			
+			var evenement_id = $(this).attr('data-evenement_id');
+			
+			$('#dialogKrakPopup').krakPopup({
+				title:"Définir les montants",
+				url:base_url+'evenementiel/popup_redevance_evenement/'+evenement_id,
+				width:500,
+				contentMinHeight:150,
+				draggable:false,
+				closeButton:false,
+				submitButton:false,
+				customButton:{	
+					show:true,
+					text:'Valider',
+					clickFn:function(){
+						
+						
+				noty({
+					dismissQueue: false,
+					force: true,
+					layout:'center',
+					modal: true,
+					theme: 'defaultTheme',
+					text: 'Voulez-vous vraiment valider ?',
+					type: "warning",
+					buttons: [{addClass: 'btn btn-success ', text: 'OUI', onClick: function($noty) {
+					   $noty.close();
+							
+						var evenement_statut_paiement	 = $('#evenement_statut_paiement').val();
+						var evenement_montant_a_paye     = $('#evenement_montant_a_paye').val();
+						var evenement_montant_paye	     = $('#evenement_montant_paye').val();
+						var evenement_commentaire 	     = $('#evenement_commentaire').val();
+						
+						if(evenement_statut_paiement !="" && evenement_montant_a_paye !=""  && evenement_montant_paye !="" ){
+								
+							$.ajax({
+								headers:{'X-CSRF-TOKEN': csrf_token},
+								type:'post',
+								url: base_url + '/evenementiel/set_redevance_evenement',
+								data: {evenement_id:evenement_id, evenement_montant_a_paye:evenement_montant_a_paye, evenement_montant_paye:evenement_montant_paye, evenement_commentaire:evenement_commentaire, evenement_statut_paiement:evenement_statut_paiement},
+								success: function(e){
+									
+									if(e == 1){
+										
+										ceBouton.hide();
+										
+										location.href = "";
+										
+										notification("Opération effectuée avec succès","success");
+										
+									}else{
+										
+										notification("Erreur lors de l'enregistrement","error");
+										
+									}
+									
+								},
+								error: function(){
+									notification("Erreur lors du traitement","error");
+								}
+							});
+							
+						}else{
+							notification("Veuillez renseigner tous les champs","warning");
+						}
+
+					   }},
+					   {addClass: 'btn btn-info ', text: 'Non', onClick: function($noty) {
+							$noty.close();
+						
+					   
+					   }}]
+				});
+				
+
+					}
+				},
+				onFinish:function(){
+					
+				}
+
+			});
+				
+				
+		});
 		
 
+		// modifier les valeurs
+		// $('#btnModifierValeurs').click(function(){
+			
+		// 	var ceBouton = $(this);
+			
+		// 	var evenement_id = $(this).attr('data-evenement_id');
+			
+		// 	$('#dialogKrakPopup').krakPopup({
+		// 		title:"Définir les montants",
+		// 		url:base_url+'evenementiel/popup_redevance_evenement/'+evenement_id,
+		// 		width:500,
+		// 		contentMinHeight:150,
+		// 		draggable:false,
+		// 		closeButton:false,
+		// 		submitButton:false,
+		// 		customButton:{	
+		// 			show:true,
+		// 			text:'Valider',
+		// 			clickFn:function(){
+						
+						
+		// 		noty({
+		// 			dismissQueue: false,
+		// 			force: true,
+		// 			layout:'center',
+		// 			modal: true,
+		// 			theme: 'defaultTheme',
+		// 			text: 'Voulez-vous vraiment valider ?',
+		// 			type: "warning",
+		// 			buttons: [{addClass: 'btn btn-success ', text: 'OUI', onClick: function($noty) {
+		// 			   $noty.close();
+							
+		// 				var evenement_statut_paiement	 = $('#evenement_statut_paiement').val();
+		// 				var evenement_montant_a_paye     = $('#evenement_montant_a_paye').val();
+		// 				var evenement_montant_paye	     = $('#evenement_montant_paye').val();
+		// 				var evenement_commentaire 	     = $('#evenement_commentaire').val();
+						
+		// 				if(evenement_statut_paiement !="" && evenement_montant_a_paye !=""  && evenement_montant_paye !="" ){
+								
+		// 					$.ajax({
+		// 						headers:{'X-CSRF-TOKEN': csrf_token},
+		// 						type:'post',
+		// 						url: base_url + '/evenementiel/set_redevance_evenement',
+		// 						data: {evenement_id:evenement_id, evenement_montant_a_paye:evenement_montant_a_paye, evenement_montant_paye:evenement_montant_paye, evenement_commentaire:evenement_commentaire, evenement_statut_paiement:evenement_statut_paiement},
+		// 						success: function(e){
+									
+		// 							if(e == 1){
+										
+		// 								ceBouton.hide();
+										
+		// 								location.href = "";
+										
+		// 								notification("Opération effectuée avec succès","success");
+										
+		// 							}else{
+										
+		// 								notification("Erreur lors de l'enregistrement","error");
+										
+		// 							}
+									
+		// 						},
+		// 						error: function(){
+		// 							notification("Erreur lors du traitement","error");
+		// 						}
+		// 					});
+							
+		// 				}else{
+		// 					notification("Veuillez renseigner tous les champs","warning");
+		// 				}
+
+		// 			   }},
+		// 			   {addClass: 'btn btn-info ', text: 'Non', onClick: function($noty) {
+		// 					$noty.close();
+						
+					   
+		// 			   }}]
+		// 		});
+				
+
+		// 			}
+		// 		},
+		// 		onFinish:function(){
+					
+		// 		}
+
+		// 	});
+				
+				
+		// });
+		
+		
+		
+		/* FIN APP EVENEMENTIEL WHATSAPP */
+		
+		
+
+		$('.btnSupprimerEvenement').click(function(){
+			
+			var evenement_id = $(this).attr('data-evenement_id');
+			
+			noty({
+				dismissQueue: false,
+				force: true,
+				layout:'center',
+				modal: true,
+				theme: 'defaultTheme',
+				text:"Voulez-vous vraiment supprimer cet evenementiel ?",
+				type: 'warning',
+				buttons: [
+					{addClass: 'btn btn-danger ', text: 'Supprimer', onClick: function($noty) {
+				   		$noty.close();
+
+						$.ajax({
+							headers:{'X-CSRF-TOKEN': csrf_token},
+							type:'post',
+							url: base_url + 'supprimer_evenement',
+							data: {evenement_id:evenement_id},
+							success: function(data){
+								
+								if(data == 1){
+									location.href = "";
+								}else{
+									notification('Erreur lors de la suppression',"warning");
+								}
+								
+							},
+							error: function(){
+								notification("Erreur lors du traitement","error");
+							}
+						});
+
+				   	}},
+				   	{addClass: 'btn btn-info ', text: 'Non', onClick: function($noty) {
+				   		$noty.close();
+				   	}}]
+			});
+
+			
+		});
 	
-	});
+				
+			//
+
 }(window.jQuery);

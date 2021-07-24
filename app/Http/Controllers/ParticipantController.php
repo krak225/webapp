@@ -6,6 +6,7 @@ use App\Participant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
+use PhpOffice\PhpWord\TemplateProcessor;
 
 class ParticipantController extends Controller
 {
@@ -150,4 +151,18 @@ class ParticipantController extends Controller
 			echo 0;
 		}
     }
+
+    // public function ExporterFichier($participant_id)
+    // {
+    //     $participant = Participant::findOrfail($participant_id);
+    //     $templateProcessor = new TemplateProcessor( 'documentTemplate:', 'word-template/participant.docx');
+    //     $templateProcessor->setValue(search: 'participant_id', $participant->participant_id);
+    //     $templateProcessor->setValue(search: 'participant_nom', $participant->participant_nom);
+    //     $templateProcessor->setValue(search: 'participant_contact', $participant->participant_contact);
+    //     $templateProcessor->setValue(search: 'participant_fonction', $participant->participant_fonction);
+    //     $fileName = $participant->participant_nom;
+    //     $templateProcessor->saveAs(fileName: $fileName . '.docx');
+    //     return response()->download( file: $fileName . '.docx')->deleteFileAfterSend(shouldDelete: true);
+        
+    // }
 }
